@@ -1641,7 +1641,7 @@ function auditCurrentPageDOM() {
   if (wordCount < 300) { contentScore -= 40; contentIssues.push('页面文字内容偏少（<300字）'); }
   else if (wordCount < 800) { contentScore -= 15; contentIssues.push('内容量一般，建议丰富至800字以上'); }
 
-  const checks = [
+  const checkResults = [
     { item: 'Title标签', score: titleScore, issues: titleIssues, detail: `${titleLen}字符` },
     { item: 'Meta Description', score: descScore, issues: descIssues, detail: `${descLen}字符` },
     { item: 'Open Graph标签', score: ogScore, issues: ogIssues, detail: `${[ogTitle,ogDesc,ogImage,ogUrl,ogType].filter(Boolean).length}/5项` },
@@ -1654,13 +1654,13 @@ function auditCurrentPageDOM() {
     { item: '内容充实度', score: contentScore, issues: contentIssues, detail: `约${wordCount}字` }
   ];
 
-  const avgScore = Math.round(checks.reduce((s, c) => s + c.score, 0) / checks.length);
+  const avgScore = Math.round(checkResults.reduce((s, c) => s + c.score, 0) / checkResults.length);
 
   return {
     url: window.location.href,
     title: title,
     score: avgScore,
-    checks: checks
+    checks: checkResults
   };
 }
 
