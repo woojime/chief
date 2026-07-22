@@ -1,0 +1,63 @@
+# CHIEF 启啡 GEO 系统 - 自动部署工作流
+# 每当 main 分支有新的 push 或合并 PR，自动部署到 GitHub Pages
+# 同时更新 sitemap.xml 帮助搜索引擎发现新内容
+
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:  # 允许手动触发部署
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Generate sitemap
+        run: |
+          node scripts/generate-sitemap.js
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Notify search engines
+        run: |
+          echo "Site deployed to: ${{ steps.deployment.outputs.page_url }}"
+          echo "Sitemap URL: ${{ steps.deployment.outputs.page_url }}/sitemap.xml"
+          echo ""
+          echo "=== 部署成功！==="
+          echo "1. 访问你的站点: ${{ steps.deployment.outputs.page_url }}"
+          echo "2. 提交 sitemap 给搜索引擎:"
+          echo "   百度: https://ziyuan.baidu.com/linksubmit/url"
+          echo "   Google: https://search.google.com/search-console"
+          echo "   必应: https://www.bing.com/webmasters"

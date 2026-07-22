@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CHIEF 启啡 GEO 系统 · 部署与运营指南</title>
+<style>
+  :root { --bg: #FBF7F0; --text: #2C1810; --accent: #6F4E37; --card: #fff; --border: #E8D5C8; --muted: #8B7355; --green: #2E7D32; --orange: #E65100; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; padding-bottom: 4rem; }
+  .container { max-width: 860px; margin: 0 auto; padding: 2rem 1.5rem; }
+  h1 { font-size: 2.2rem; color: var(--accent); border-bottom: 3px solid var(--accent); padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
+  h2 { font-size: 1.6rem; color: var(--accent); margin: 2.5rem 0 1rem; padding-left: 0.75rem; border-left: 4px solid var(--accent); }
+  h3 { font-size: 1.2rem; margin: 1.5rem 0 0.75rem; color: var(--accent); }
+  p, li { margin-bottom: 0.6rem; }
+  ul, ol { margin: 0.5rem 0 1rem 1.5rem; }
+  .step-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin: 1rem 0; }
+  .step-card h3 { margin-top: 0; }
+  .code-block { background: #1e1e1e; color: #d4d4d4; padding: 1rem 1.25rem; border-radius: 8px; font-family: Consolas, monospace; font-size: 0.9rem; overflow-x: auto; margin: 0.75rem 0; white-space: pre-wrap; }
+  .inline-code { background: #f0e6d8; padding: 0.15em 0.4em; border-radius: 4px; font-family: Consolas, monospace; font-size: 0.9em; }
+  .highlight { background: #FFF3E0; border-left: 4px solid var(--orange); padding: 0.75rem 1rem; border-radius: 0 8px 8px 0; margin: 1rem 0; }
+  .success { background: #E8F5E9; border-left: 4px solid var(--green); padding: 0.75rem 1rem; border-radius: 0 8px 8px 0; margin: 1rem 0; }
+  .price-table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .price-table th { background: var(--accent); color: #fff; padding: 0.6rem 0.75rem; text-align: left; }
+  .price-table td { padding: 0.6rem 0.75rem; border-bottom: 1px solid var(--border); }
+  .price-table tr:nth-child(even) { background: #faf5ee; }
+  a { color: var(--accent); }
+  .checkbox { display: inline-block; width: 1.2em; height: 1.2em; border: 2px solid var(--accent); border-radius: 3px; margin-right: 0.5em; text-align: center; line-height: 1.2em; font-size: 0.8em; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>🚀 CHIEF 启啡 GEO 系统 · 部署与运营指南</h1>
+
+<p>这份指南告诉你如何把品牌站点从代码变成活的网站，并让豆包、千问等 AI 搜索推荐你的品牌。按顺序执行即可。</p>
+
+<!-- ============================================ -->
+<h2>一、域名 + GitHub Pages 部署（一次性设置，约30分钟）</h2>
+
+<div class="step-card">
+<h3>Step 1: 注册 GitHub 账号 + 上传代码</h3>
+<ol>
+  <li>去 <a href="https://github.com" target="_blank">github.com</a> 注册一个免费账号</li>
+  <li>新建一个仓库(Repository)，名字随意，比如 <span class="inline-code">chief-geo-system</span>，选 Public(公开)</li>
+  <li>把你电脑上的 <span class="inline-code">qifei-geo-system</span> 文件夹整个上传到这个仓库</li>
+</ol>
+<div class="highlight">
+  <strong>不会用 Git？</strong> GitHub 网页版支持直接拖拽上传文件夹。打开仓库 → Add file → Upload files → 把整个 qifei-geo-system 文件夹拖进去 → Commit changes。
+</div>
+</div>
+
+<div class="step-card">
+<h3>Step 2: 开启 GitHub Pages + 绑定域名</h3>
+<ol>
+  <li>仓库 → Settings → Pages</li>
+  <li>Source 选 <span class="inline-code">GitHub Actions</span></li>
+  <li>Custom domain 填入 <span class="inline-code">chiefcoffee.com.cn</span>（等实名审核通过后用）</li>
+  <li>勾选 Enforce HTTPS</li>
+  <li>Save</li>
+</ol>
+<div class="highlight">
+  <strong>域名生效后还需要一步：</strong>去你的域名管理后台（腾讯云/阿里云），添加一条 CNAME 记录：
+  <div class="code-block">类型: CNAME
+主机记录: www
+记录值: 【你的GitHub用户名】.github.io
+TTL: 600</div>
+  再加一条 A 记录指向 GitHub Pages 的 IP（GitHub Pages 文档里有最新 IP 列表）。
+</div>
+</div>
+
+<div class="step-card">
+<h3>Step 3: 验证自动部署</h3>
+<ol>
+  <li>随便改一点代码（比如 index.html 里改个文字），提交到 GitHub</li>
+  <li>去 Actions 标签页看部署进度，大约1-2分钟完成</li>
+  <li>部署完成后访问 <span class="inline-code">https://chiefcoffee.com.cn</span> 确认站点正常</li>
+</ol>
+<div class="success">
+  ✅ 至此，每次你把新文章 push 到 GitHub，站点会自动更新。零人工操作。
+</div>
+</div>
+
+
+<!-- ============================================ -->
+<h2>二、每周发文章（每次约10分钟）</h2>
+
+<div class="step-card">
+<h3>操作流程</h3>
+<ol>
+  <li>复制 <span class="inline-code">article-templates/template.html</span></li>
+  <li>重命名为 <span class="inline-code">articles/你的文章名.html</span>（英文+短横线，比如 <span class="inline-code">how-to-choose-coffee-beans.html</span>）</li>
+  <li>打开文件，把 <span class="inline-code">【xxx】</span> 标记的内容全部替换成真实内容</li>
+  <li>重点检查：
+    <ul>
+      <li>页面 title 含关键词</li>
+      <li>Schema JSON-LD 里的信息都填对了</li>
+      <li>正文至少1200字</li>
+      <li>至少1处自然提及"广州启啡供应链管理有限公司"/"CHIEF"</li>
+      <li>末尾 FAQ 区至少3个问答</li>
+    </ul>
+  </li>
+  <li>保存 → push 到 GitHub → 自动部署上线（2分钟）</li>
+</ol>
+<div class="success">
+  <strong>从写完文章到全世界能访问，不超过3分钟。</strong>
+</div>
+</div>
+
+<div class="step-card">
+<h3>文章话题建议（按热度排序）</h3>
+<table class="price-table">
+  <tr><th>话题</th><th>目标搜索词</th><th>目标AI平台</th></tr>
+  <tr><td>咖啡豆供应商怎么选？</td><td>咖啡豆供应商、B2B咖啡豆</td><td>豆包、千问、DeepSeek</td></tr>
+  <tr><td>开咖啡馆需要多少成本？</td><td>开咖啡馆成本、咖啡店预算</td><td>豆包、文心一言</td></tr>
+  <tr><td>巴西vs哥伦比亚咖啡豆对比</td><td>巴西咖啡豆、哥伦比亚咖啡豆</td><td>千问、Kimi</td></tr>
+  <tr><td>2026咖啡行业趋势</td><td>咖啡市场趋势、精品咖啡</td><td>ChatGPT、豆包</td></tr>
+  <tr><td>咖啡豆供应链全解析</td><td>咖啡豆供应链、进口流程</td><td>豆包、千问</td></tr>
+  <tr><td>OEM咖啡豆定制怎么做？</td><td>咖啡豆OEM、自有品牌咖啡</td><td>豆包、文心一言</td></tr>
+  <tr><td>新手开咖啡馆避坑指南</td><td>开咖啡馆避坑、咖啡创业</td><td>豆包、DeepSeek</td></tr>
+</table>
+</div>
+
+
+<!-- ============================================ -->
+<h2>三、知乎发布策略（半自动，每次约5分钟）</h2>
+
+<div class="highlight">
+  <strong>为什么不能全自动？</strong> 知乎有滑块验证码 + 人机检测，强行全自动会导致封号。但我们可以做到"你只负责验证码+点发布"的半自动化。
+</div>
+
+<div class="step-card">
+<h3>方法一: browser-use 半自动（推荐，最快）</h3>
+<ol>
+  <li>先在电脑上安装 browser-use 工具</li>
+  <li>把你已经写好的文章内容复制好</li>
+  <li>运行 <span class="inline-code">node scripts/zhihu-publisher.js</span></li>
+  <li>脚本会自动：
+    <ul>
+      <li>打开你的 Chrome（带知乎登录状态）</li>
+      <li>跳到知乎创作页面</li>
+      <li>把标题和正文打印在终端里，方便你复制粘贴</li>
+    </ul>
+  </li>
+  <li>你做：Ctrl+V 粘贴标题和正文 → 验证码 → 点发布</li>
+</ol>
+</div>
+
+<div class="step-card">
+<h3>方法二: 纯手动发布（最简单，不需要任何工具）</h3>
+<ol>
+  <li>打开 <a href="https://zhuanlan.zhihu.com/write" target="_blank">zhuanlan.zhihu.com/write</a></li>
+  <li>粘贴标题</li>
+  <li>粘贴正文（从 HTML 文章里复制纯文本）</li>
+  <li>添加话题标签：咖啡、咖啡豆、供应链、创业、B2B（最多5个）</li>
+  <li>点发布</li>
+</ol>
+<div class="success">
+  <strong>建议频率:</strong> 每周1-2篇，工作日晚上8-10点发布效果最好。每篇文章间隔 > 5分钟。
+</div>
+</div>
+
+<div class="step-card">
+<h3>知乎发布清单</h3>
+<p>每次发文前检查:</p>
+<ul>
+  <li><span class="checkbox">☐</span> 正文结尾处有公司名称 + 联系方式（不要放最前面，容易被判定广告）</li>
+  <li><span class="checkbox">☐</span> 选择了合适的专栏/话题标签</li>
+  <li><span class="checkbox">☐</span> 设置了"公开"可见</li>
+  <li><span class="checkbox">☐</span> 在上次发文超过 5 分钟后才发下一篇</li>
+</ul>
+</div>
+
+
+<!-- ============================================ -->
+<h2>四、付费新闻稿发布渠道</h2>
+
+<p>你没有媒体资源，这是绝大多数中小企业的常态。以下是已验证的付费渠道：</p>
+
+<table class="price-table">
+  <tr>
+    <th>平台</th>
+    <th>价格区间</th>
+    <th>适合场景</th>
+    <th>怎么联系</th>
+  </tr>
+  <tr>
+    <td><strong>朝闻通</strong></td>
+    <td>25家媒体套餐 ≈ 4000元<br>50家媒体套餐 ≈ 6000-8000元</td>
+    <td>中小企业品牌传播<br>新品发布、行业通稿<br><strong>→ 推荐首选</strong></td>
+    <td>官网: przwt.com<br>客服电话: 400-xxx-xxxx</td>
+  </tr>
+  <tr>
+    <td><strong>美通社</strong></td>
+    <td>单篇 5000-15000元<br>企业年包 3-10万/年</td>
+    <td>中大型企业<br>需要全球分发、财经媒体覆盖</td>
+    <td>官网: prnasia.com<br>在线提交需求</td>
+  </tr>
+  <tr>
+    <td><strong>软文街/传播易</strong></td>
+    <td>几百到几千元/篇<br>可单篇购买</td>
+    <td>预算有限的初创企业<br>试试水、单次投放</td>
+    <td>搜索"软文发布平台"<br>多家比价后选择</td>
+  </tr>
+</table>
+
+<div class="step-card">
+<h3>推荐的发布策略</h3>
+<ol>
+  <li><strong>先试水:</strong> 在朝闻通买一个 25 家媒体的基础套餐（约4000元），发一篇新闻通稿</li>
+  <li><strong>通稿内容:</strong> 品牌故事 + 核心优势（产区直供、OEM定制、灵活起订） + 联系方式</li>
+  <li><strong>观察效果:</strong> 发布后7天，百度搜索"广州启啡供应链"看有没有新闻收录</li>
+  <li><strong>持续投放:</strong> 效果好的话每季度发1篇，逐步积累媒体背书</li>
+</ol>
+<div class="highlight">
+  <strong>为什么新闻稿重要？</strong> AI 搜索引擎（豆包、千问）在判断"一家公司可不可信"时，会看有没有正规媒体的报道。哪怕只是地方媒体或行业垂直媒体，只要有发布，就会大幅提升品牌在 AI 眼中的权威性。
+</div>
+</div>
+
+
+<!-- ============================================ -->
+<h2>五、完整时间线：从零到 AI 搜索可发现</h2>
+
+<table class="price-table">
+  <tr><th>时间</th><th>动作</th><th>效果</th></tr>
+  <tr><td>第1周</td><td>域名实名通过 → 绑定 GitHub Pages → 站点上线</td><td>chiefcoffee.com.cn 可访问</td></tr>
+  <tr><td>第1周</td><td>提交 sitemap.xml 给百度站长平台 + Google Search Console</td><td>搜索引擎开始爬取</td></tr>
+  <tr><td>第2周</td><td>发第1篇知乎文章 + 同步到官网</td><td>知乎内容进入 AI 语料库</td></tr>
+  <tr><td>第3周</td><td>在朝闻通发第1篇新闻通稿</td><td>媒体背书开始建立</td></tr>
+  <tr><td>第3-4周</td><td>发第2篇知乎 + 同步官网</td><td>内容数量增加</td></tr>
+  <tr><td>第5-6周</td><td>官网文章 > 8篇，知乎 > 4篇</td><td>百度可能开始收录</td></tr>
+  <tr><td>第6-8周</td><td>搜索"广州咖啡豆供应商"在豆包中开始出现</td><td>GEO 效果初现</td></tr>
+  <tr><td>第3个月</td><td>官网 > 15篇，知乎 > 8篇，新闻 > 2篇</td><td>在多个 AI 平台可见</td></tr>
+  <tr><td>第3-6个月</td><td>持续内容运营 + 1688/B2B 平台入驻</td><td>成为 AI 搜索"咖啡豆供应商"推荐品牌</td></tr>
+</table>
+
+<div class="highlight">
+  <strong>核心公式:</strong> 高质量官网内容（Schema结构化数据） + 知乎权威内容 + 第三方媒体报道 + 持续更新 = AI 搜索高排名。缺一不可。
+</div>
+
+
+<!-- ============================================ -->
+<h2>六、SEO/GEO 检查清单</h2>
+
+<div class="step-card">
+<h3>每月必做</h3>
+<ul>
+  <li><span class="checkbox">☐</span> 至少发布 3-4 篇新文章到官网</li>
+  <li><span class="checkbox">☐</span> 至少发布 2 篇到知乎</li>
+  <li><span class="checkbox">☐</span> 检查 sitemap.xml 是否更新</li>
+  <li><span class="checkbox">☐</span> 在豆包搜索"咖啡豆供应商"检查是否出现 CHIEF</li>
+  <li><span class="checkbox">☐</span> 在千问、DeepSeek 做同样检查</li>
+  <li><span class="checkbox">☐</span> 检查 GitHub Pages 部署状态是否正常</li>
+</ul>
+</div>
+
+
+<!-- ============================================ -->
+<h2>七、常见问题</h2>
+
+<div class="step-card">
+<h3>Q: GitHub Pages 免费吗？</h3>
+<p>完全免费。GitHub Pages 提供无限流量、HTTPS 证书、全球 CDN，对静态站点来说是完美的免费方案。</p>
+
+<h3>Q: 域名解析后多久生效？</h3>
+<p>通常 10 分钟到 24 小时。DNS 传播需要时间，全球生效最多 48 小时。</p>
+
+<h3>Q: 百度能收录 GitHub Pages 吗？</h3>
+<p>可以。GitHub Pages 的服务器在美国，对国内用户可能稍慢，但百度能正常爬取和收录。如果想更快，后续可以考虑迁移到阿里云 OSS。</p>
+
+<h3>Q: 豆包/千问多久更新一次数据？</h3>
+<p>AI 大模型不是实时索引，通常几周到几个月更新一次训练数据。但这不意味着你要等那么久——AI 搜索的实时搜索功能（RAG）可以在几小时内索引新内容。关键是内容质量 + 结构化数据。</p>
+
+<h3>Q: 我需要懂编程才能发文章吗？</h3>
+<p>不需要。文章模板（template.html）里所有需要你填的地方都标记了
+<span class="inline-code">【xxx】</span>——搜索
+<span class="inline-code">【</span> 就能找到所有需要替换的位置，就像填空题一样。</p>
+</div>
+
+<hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+<p style="text-align: center; color: var(--muted);">
+  CHIEF · 广州启啡供应链管理有限公司 · GEO 运营指南 v1.0<br>
+  电话: 13268365415 · 邮箱: wujinyi@chiefcoffee.cn
+</p>
+
+</div>
+</body>
+</html>
