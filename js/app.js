@@ -271,7 +271,9 @@ let currentAdminPanel = 'dashboard';
    ============================================ */
 function init() {
   loadData();
-  initTheme();
+  // 强制统一阳光模式
+  document.documentElement.setAttribute('data-theme', 'light');
+  localStorage.setItem('chief_theme', 'light');
   renderProducts();
   renderContent();
   renderFaq();
@@ -279,7 +281,6 @@ function init() {
   checkAdminUrl();  // Check admin auth on page load
 
   // Event bindings
-  document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
   document.getElementById('mobile-menu-btn').addEventListener('click', toggleMobileMenu);
 
   // Contact form
@@ -308,27 +309,6 @@ function saveData() {
 /* ============================================
    Theme
    ============================================ */
-function initTheme() {
-  const saved = localStorage.getItem('chief_theme');
-  const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const theme = saved || (systemDark ? 'dark' : 'light');
-  document.documentElement.setAttribute('data-theme', theme);
-  updateThemeIcon(theme);
-}
-
-function toggleTheme() {
-  const current = document.documentElement.getAttribute('data-theme') || 'light';
-  const next = current === 'dark' ? 'light' : 'dark';
-  document.documentElement.setAttribute('data-theme', next);
-  localStorage.setItem('chief_theme', next);
-  updateThemeIcon(next);
-}
-
-function updateThemeIcon(theme) {
-  const btn = document.getElementById('theme-toggle');
-  if (btn) btn.textContent = theme === 'dark' ? '🌙' : '☀️';
-}
-
 /* ============================================
    Navigation
    ============================================ */
