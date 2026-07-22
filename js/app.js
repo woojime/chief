@@ -542,7 +542,7 @@ function hideAdminLogin() {
   if (overlay) overlay.classList.remove('active');
 }
 
-// Login handler
+// Login handler — directly open admin panel on success
 function adminLogin() {
   const input = document.getElementById('admin-password-input');
   const error = document.getElementById('admin-login-error');
@@ -551,7 +551,7 @@ function adminLogin() {
   if (input.value === ADMIN_PASSWORD) {
     setAdminAuthed(true);
     hideAdminLogin();
-    showAdminFab();
+    toggleAdmin();  // 直接打开后台，不显示浮动按钮
     showToast('验证通过，已进入管理模式', 'success');
   } else {
     if (error) error.classList.add('show');
@@ -571,17 +571,9 @@ function adminCancel() {
   }
 }
 
-// Show admin FAB
-function showAdminFab() {
-  const fab = document.getElementById('admin-fab');
-  if (fab) fab.classList.add('authed');
-}
-
 // Logout
 function adminLogout() {
   setAdminAuthed(false);
-  const fab = document.getElementById('admin-fab');
-  if (fab) fab.classList.remove('authed');
   const panel = document.getElementById('admin-panel');
   if (panel) panel.classList.remove('active');
   document.body.style.overflow = '';
@@ -593,16 +585,14 @@ function checkAdminUrl() {
   const params = new URLSearchParams(window.location.search);
   if (params.has('admin')) {
     if (isAdminAuthed()) {
-      // Already authed, clean URL and show FAB
-      showAdminFab();
+      // Already authed — directly open admin panel
+      toggleAdmin();
     } else {
       // Not authed yet, show login
       showAdminLogin();
     }
-  } else if (isAdminAuthed()) {
-    // Authed from previous session, show FAB silently
-    showAdminFab();
   }
+  // No ?admin param = normal public site, don't show anything
 }
 
 // Toggle admin panel (only works when authed)
