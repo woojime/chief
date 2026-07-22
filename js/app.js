@@ -158,7 +158,7 @@ const chiefProducts = [
   }
 ];
 
-// Default app data
+// Default app data — 所有数据真实可验证，无虚假指标
 const defaultData = {
   articles: [
     {
@@ -166,7 +166,6 @@ const defaultData = {
       title: '精品咖啡豆供应链管理：从产地到杯中的品质保障',
       excerpt: '了解CHIEF启啡如何通过严格的供应链管理，确保每一颗咖啡豆从产区到中国咖啡店都保持最佳品质。',
       content: '在精品咖啡行业，供应链管理是决定最终杯中品质的关键环节。CHIEF启啡深耕咖啡豆贸易多年，建立了从埃塞俄比亚、哥伦比亚、巴西等主要产区到中国市场的完整链路...',
-      geoScore: 92,
       category: '供应链',
       published: '2026-06-15',
       status: 'published',
@@ -178,7 +177,6 @@ const defaultData = {
       title: '咖啡店如何选择靠谱的咖啡豆供应商？5大关键指标',
       excerpt: '选对供应商决定了咖啡店的品质底线。本文从新鲜度、稳定性、性价比、服务支持和定制能力五个维度帮你筛选。',
       content: '对于咖啡店主来说，选择咖啡豆供应商是开业前最重要的决策之一。一个好的供应商不仅提供优质豆子，更是你品质稳定的保障...',
-      geoScore: 88,
       category: '选豆指南',
       published: '2026-06-20',
       status: 'published',
@@ -190,7 +188,6 @@ const defaultData = {
       title: '2026年中国精品咖啡市场趋势与供应链变革',
       excerpt: '中国咖啡市场持续高速增长，精品化趋势明显。作为B2B咖啡豆供应商，CHIEF启啡如何看待这一轮行业升级？',
       content: '中国咖啡市场正在经历从"喝咖啡"到"喝好咖啡"的深刻转变。消费者对咖啡品质的认知不断提升，直接推动了上游供应链的升级...',
-      geoScore: 85,
       category: '行业趋势',
       published: '2026-07-01',
       status: 'published',
@@ -202,7 +199,6 @@ const defaultData = {
       title: '单品咖啡豆vs拼配咖啡豆：B2B采购怎么选？',
       excerpt: 'SOE还是Blend？CHIEF启啡技术团队为你解析两种咖啡豆在商业场景中的不同表现。',
       content: '在B2B咖啡豆采购中，"单品还是拼配"是每个采购决策者都会遇到的问题。答案没有绝对好坏，取决于你的门店定位、客户群体和出品需求...',
-      geoScore: 79,
       category: '技术科普',
       published: '2026-07-08',
       status: 'draft',
@@ -214,7 +210,6 @@ const defaultData = {
       title: '咖啡豆OEM定制：如何打造自有品牌咖啡产品线',
       excerpt: '从选豆、烘焙到包装，CHIEF启啡为你提供一站式OEM定制解决方案，助力品牌升级。',
       content: '越来越多的咖啡品牌和餐饮连锁希望通过自有品牌咖啡来提升差异化竞争力。CHIEF启啡提供从选豆、烘焙曲线设计到包装定制的一站式OEM服务...',
-      geoScore: 87,
       category: 'OEM定制',
       published: '2026-07-12',
       status: 'published',
@@ -224,32 +219,19 @@ const defaultData = {
   ],
 
   keywords: [
-    { word: '咖啡豆供应商', volume: '12,800', trend: '↑', aiVisibility: 72, platforms: { doubao: 5, qwen: 4, deepseek: 6, chatgpt: 8, kimi: 5, wenxin: 4 } },
-    { word: '精品咖啡豆批发', volume: '8,500', trend: '↑', aiVisibility: 65, platforms: { doubao: 6, qwen: 5, deepseek: 5, chatgpt: 7, kimi: 6, wenxin: 5 } },
-    { word: 'B2B咖啡豆供应', volume: '3,200', trend: '→', aiVisibility: 58, platforms: { doubao: 7, qwen: 6, deepseek: 7, chatgpt: 9, kimi: 7, wenxin: 6 } },
-    { word: '广州咖啡豆供应商', volume: '5,400', trend: '↑', aiVisibility: 81, platforms: { doubao: 3, qwen: 3, deepseek: 4, chatgpt: 5, kimi: 4, wenxin: 3 } },
-    { word: '咖啡豆OEM定制', volume: '2,100', trend: '↑', aiVisibility: 45, platforms: { doubao: 8, qwen: 7, deepseek: 8, chatgpt: 10, kimi: 8, wenxin: 7 } },
-    { word: '咖啡店用咖啡豆', volume: '9,200', trend: '↑', aiVisibility: 52, platforms: { doubao: 6, qwen: 5, deepseek: 6, chatgpt: 8, kimi: 6, wenxin: 5 } },
-    { word: '咖啡豆供应链', volume: '4,800', trend: '→', aiVisibility: 61, platforms: { doubao: 5, qwen: 4, deepseek: 5, chatgpt: 7, kimi: 5, wenxin: 4 } },
-    { word: 'SOE咖啡豆', volume: '6,700', trend: '↑', aiVisibility: 38, platforms: { doubao: 9, qwen: 8, deepseek: 9, chatgpt: 10, kimi: 9, wenxin: 8 } }
+    { word: '咖啡豆供应商', history: [] },
+    { word: '精品咖啡豆批发', history: [] },
+    { word: 'B2B咖啡豆供应', history: [] },
+    { word: '广州咖啡豆供应商', history: [] },
+    { word: '咖啡豆OEM定制', history: [] },
+    { word: '咖啡店用咖啡豆', history: [] },
+    { word: '咖啡豆供应链', history: [] },
+    { word: 'SOE咖啡豆', history: [] }
   ],
 
-  geoChecklist: [
-    { item: '网站结构化数据(Schema.org)', status: 'pass', detail: '已部署Organization、Product、FAQ、Article结构化标记' },
-    { item: '百度收录状态', status: 'warn', detail: '站点刚上线，需等待爬虫索引' },
-    { item: 'AI搜索引擎可见性', status: 'warn', detail: '内容建设初期，品牌提及率待提升' },
-    { item: '核心关键词密度', status: 'pass', detail: '目标关键词密度在健康区间' },
-    { item: '移动端适配', status: 'pass', detail: '响应式设计已通过各尺寸测试' },
-    { item: '页面加载速度', status: 'pass', detail: '首屏加载<1.5s，性能优秀' },
-    { item: '内容更新频率', status: 'warn', detail: '建议每周发布1-2篇行业文章' },
-    { item: '第三方平台品牌引用', status: 'fail', detail: '建议在知乎、B2B平台发布品牌内容' }
-  ],
+  geoChecklist: [],
 
-  rankings: [
-    { keyword: '咖啡豆供应商', platforms: { doubao: { rank: 5, score: 72 }, qwen: { rank: 4, score: 78 }, deepseek: { rank: 6, score: 68 }, chatgpt: { rank: 8, score: 55 }, kimi: { rank: 5, score: 70 }, wenxin: { rank: 4, score: 75 } } },
-    { keyword: '精品咖啡豆批发', platforms: { doubao: { rank: 6, score: 65 }, qwen: { rank: 5, score: 70 }, deepseek: { rank: 5, score: 70 }, chatgpt: { rank: 7, score: 60 }, kimi: { rank: 6, score: 65 }, wenxin: { rank: 5, score: 70 } } },
-    { keyword: '广州咖啡豆供应商', platforms: { doubao: { rank: 3, score: 85 }, qwen: { rank: 3, score: 85 }, deepseek: { rank: 4, score: 80 }, chatgpt: { rank: 5, score: 75 }, kimi: { rank: 4, score: 80 }, wenxin: { rank: 3, score: 85 } } }
-  ],
+  auditHistory: [],
 
   faq: [
     { id: 1, q: '启啡CHIEF提供哪些咖啡豆产品？', a: '启啡CHIEF目前提供10款核心产品：3款SOE单一产地（花魁X、朗姆SOE、耶加雪菲SOE）和7款拼配系列（凤梨甜心、可可拼配、牛油果拼配、青梅拼配、甜橙拼配、椰子油拼配、芝士拼配）。每款产品都有明确的产区溯源和风味档案。' },
@@ -298,7 +280,17 @@ function init() {
 function loadData() {
   try {
     const saved = localStorage.getItem(STORAGE_KEY);
-    appData = saved ? JSON.parse(saved) : JSON.parse(JSON.stringify(defaultData));
+    if (saved) {
+      appData = JSON.parse(saved);
+      // 兼容旧数据：移除虚假字段
+      if (appData.articles) appData.articles.forEach(a => { delete a.geoScore; });
+      if (appData.keywords) appData.keywords.forEach(k => { delete k.volume; delete k.trend; delete k.aiVisibility; delete k.platforms; if (!k.history) k.history = []; });
+      delete appData.rankings;
+      if (!appData.auditHistory) appData.auditHistory = [];
+      if (!appData.geoChecklist) appData.geoChecklist = [];
+    } else {
+      appData = JSON.parse(JSON.stringify(defaultData));
+    }
   } catch {
     appData = JSON.parse(JSON.stringify(defaultData));
   }
@@ -426,7 +418,7 @@ function renderContent() {
       <div class="blog-excerpt">${a.excerpt}</div>
       <div class="blog-footer">
         <span class="blog-category">${a.category}</span>
-        <span class="geo-score">GEO ${a.geoScore}</span>
+        <span class="blog-date-sm">${a.published}</span>
       </div>
     </div>
   `).join('');
@@ -438,7 +430,7 @@ function viewArticle(id) {
 
   const modal = document.getElementById('article-view-modal');
   document.getElementById('article-view-title').textContent = article.title;
-  document.getElementById('article-view-meta').textContent = `${article.published} · ${article.category} · GEO评分: ${article.geoScore}`;
+  document.getElementById('article-view-meta').textContent = `${article.published} · ${article.category}`;
   document.getElementById('article-view-body').innerHTML = `<p>${article.content}</p>
     <div style="margin-top:1.5rem;display:flex;gap:0.5rem;flex-wrap:wrap;">
       ${article.keywords.map(k => `<span class="tag">${k}</span>`).join('')}
@@ -664,27 +656,59 @@ function navigateAdmin(panel) {
   window.scrollTo({ top: 0 });
 }
 
-/* ---------- Dashboard ---------- */
+/* ---------- Dashboard — SEO实时体检 ---------- */
 function renderDashboard() {
   const panel = document.getElementById('admin-dashboard');
   const published = appData.articles.filter(a => a.status === 'published').length;
-  const avgGeo = Math.round(appData.articles.reduce((s, a) => s + a.geoScore, 0) / appData.articles.length);
-  const keywordCoverage = Math.round(appData.keywords.reduce((s, k) => s + k.aiVisibility, 0) / appData.keywords.length);
+  const drafts = appData.articles.filter(a => a.status === 'draft').length;
+  const lastAudit = appData.auditHistory && appData.auditHistory.length > 0
+    ? appData.auditHistory[appData.auditHistory.length - 1]
+    : null;
+  const lastAuditDate = lastAudit ? new Date(lastAudit.timestamp).toLocaleString('zh-CN') : '尚未体检';
+  const lastScore = lastAudit ? lastAudit.score : null;
+  const grade = lastScore !== null ? getAuditGrade(lastScore) : null;
+
+  // 历史趋势数据（最近10次）
+  const recentHistory = (appData.auditHistory || []).slice(-10);
+  const trendHTML = recentHistory.length >= 2
+    ? `<div style="margin-top:1rem;">
+        <div style="font-size:0.8rem;color:var(--chief-brown-light);margin-bottom:0.5rem;">体检历史趋势（最近${recentHistory.length}次）</div>
+        <div style="display:flex;align-items:flex-end;gap:6px;height:80px;padding:0 4px;">
+          ${recentHistory.map((h,i) => {
+            const hh = Math.max(8, (h.score / 100) * 72);
+            const color = h.score >= 90 ? '#2E7D32' : h.score >= 75 ? '#558B2F' : h.score >= 60 ? '#F57F17' : h.score >= 40 ? '#E65100' : '#C62828';
+            return `<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;" title="${new Date(h.timestamp).toLocaleString('zh-CN')}: ${h.score}分">
+              <div style="font-size:0.6rem;color:var(--chief-brown-light);margin-bottom:2px;">${h.score}</div>
+              <div style="width:100%;height:${hh}px;background:${color};border-radius:3px 3px 0 0;opacity:0.8;"></div>
+            </div>`;
+          }).join('')}
+        </div>
+      </div>`
+    : '';
 
   panel.innerHTML = `
-    <h2 style="margin-bottom:1.5rem;font-size:1.5rem;">📊 数据概览</h2>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;">
+      <h2 style="font-size:1.5rem;">🔍 SEO实时体检</h2>
+      <button class="btn btn-primary" onclick="startAudit()" id="btn-start-audit">
+        ${lastAudit ? '🔄 重新体检' : '🚀 开始体检'}
+      </button>
+    </div>
+
+    <!-- 状态概览卡片 -->
     <div class="stats-grid">
       <div class="stat-card">
         <div class="stat-value">${published}</div>
         <div class="stat-label">已发布文章</div>
       </div>
       <div class="stat-card">
-        <div class="stat-value">${avgGeo}</div>
-        <div class="stat-label">平均GEO评分</div>
+        <div class="stat-value">${drafts}</div>
+        <div class="stat-label">草稿中</div>
       </div>
-      <div class="stat-card">
-        <div class="stat-value">${keywordCoverage}%</div>
-        <div class="stat-label">关键词AI覆盖率</div>
+      <div class="stat-card" style="${grade ? `border-left:4px solid ${grade.color};` : ''}">
+        <div class="stat-value" style="${grade ? `color:${grade.color};font-size:1.8rem;` : ''}">
+          ${grade ? `<span style="font-size:2.2rem;">${grade.grade}</span> ${grade.label}` : '—'}
+        </div>
+        <div class="stat-label">上次体检评分 · ${lastAuditDate}</div>
       </div>
       <div class="stat-card">
         <div class="stat-value">${appData.keywords.length}</div>
@@ -692,39 +716,111 @@ function renderDashboard() {
       </div>
     </div>
 
-    <div class="admin-card">
-      <h3>📝 最近文章</h3>
+    ${trendHTML}
+
+    <!-- 体检详情 -->
+    <div id="audit-results" style="margin-top:1.5rem;">
+      ${lastAudit ? renderAuditResults(lastAudit, recentHistory) : renderEmptyAudit()}
+    </div>
+
+    <!-- 快速指引 -->
+    <div class="admin-card" style="margin-top:1.5rem;">
+      <h3>💡 使用说明</h3>
+      <div style="color:var(--chief-brown-mid);font-size:0.9rem;line-height:1.8;">
+        <p>✅ <strong>每次打开后台点击「开始体检」</strong>，系统会真实检测你网站的SEO健康状态。</p>
+        <p>✅ 检测内容包括：Title标签、Meta描述、Open Graph、结构化数据、Heading层级、图片Alt、内链结构、移动端适配等。</p>
+        <p>✅ 所有数据保存在本地，<strong>体检历史趋势</strong>帮助你追踪网站改善效果。</p>
+        <p>⚠️ 评分基于客观指标计算，<strong>不包含任何虚构数据</strong>。低于60分说明存在明确的SEO问题。</p>
+      </div>
+    </div>
+  `;
+}
+
+function renderEmptyAudit() {
+  return `
+    <div class="admin-card" style="text-align:center;padding:3rem 1rem;">
+      <div style="font-size:3rem;margin-bottom:1rem;">🔍</div>
+      <p style="color:var(--chief-brown-mid);font-size:1.1rem;margin-bottom:0.5rem;">尚未进行SEO体检</p>
+      <p style="color:var(--chief-brown-light);font-size:0.9rem;">点击上方「开始体检」按钮，系统将自动检测你网站的SEO健康状态</p>
+    </div>
+  `;
+}
+
+function renderAuditResults(audit, history) {
+  if (!audit || !audit.pages || audit.pages.length === 0) return renderEmptyAudit();
+
+  const grade = getAuditGrade(audit.overallScore);
+  const mainPage = audit.pages[0];
+  const passCount = mainPage.checks.filter(c => c.score >= 80).length;
+  const failCount = mainPage.checks.filter(c => c.score < 60).length;
+
+  return `
+    <div class="admin-card" style="background:${grade.color}08;border:1px solid ${grade.color}30;">
+      <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem;">
+        <div style="width:64px;height:64px;border-radius:50%;background:${grade.color};display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.5rem;font-weight:800;">${grade.grade}</div>
+        <div>
+          <div style="font-weight:700;font-size:1.1rem;">综合评分：${audit.overallScore}/100 · ${grade.label}</div>
+          <div style="color:var(--chief-brown-light);font-size:0.85rem;">
+            检测了 ${audit.pages.length} 个页面 ·
+            ✅ ${passCount}项良好 ·
+            ${failCount > 0 ? `❌ ${failCount}项需修复` : '全部达标'}
+          </div>
+        </div>
+      </div>
+      <div style="font-size:0.8rem;color:var(--chief-brown-light);">检测时间：${new Date(audit.timestamp).toLocaleString('zh-CN')}</div>
+    </div>
+
+    <div class="admin-card" style="margin-top:1rem;">
+      <h3>📋 检测明细 — ${mainPage.url.replace(/https?:\/\//, '').replace(/\/$/, '')}</h3>
       <table class="data-table">
-        <thead><tr><th>标题</th><th>分类</th><th>GEO</th><th>状态</th></tr></thead>
+        <thead><tr><th>检查项</th><th>状态</th><th>得分</th><th>详情</th><th>问题</th></tr></thead>
         <tbody>
-          ${appData.articles.slice(0, 5).map(a => `
-            <tr>
-              <td>${a.title}</td>
-              <td>${a.category}</td>
-              <td><span style="color:${a.geoScore >= 85 ? 'var(--chief-green)' : a.geoScore >= 70 ? 'var(--warning)' : 'var(--error)'};font-weight:600;">${a.geoScore}</span></td>
-              <td><span class="tag">${a.status === 'published' ? '已发布' : '草稿'}</span></td>
-            </tr>
-          `).join('')}
+          ${mainPage.checks.map(c => {
+            const icon = c.score >= 80 ? '✅' : c.score >= 60 ? '⚠️' : '❌';
+            const color = c.score >= 80 ? 'var(--chief-green)' : c.score >= 60 ? 'var(--warning)' : 'var(--error)';
+            return `<tr>
+              <td><strong>${c.item}</strong></td>
+              <td>${icon}</td>
+              <td><span style="color:${color};font-weight:700;">${c.score}</span></td>
+              <td style="font-size:0.85rem;">${c.detail}</td>
+              <td style="font-size:0.8rem;color:var(--chief-brown-light);">${c.issues.length > 0 ? c.issues.join('；') : '<span style="color:var(--chief-green);">无</span>'}</td>
+            </tr>`;
+          }).join('')}
         </tbody>
       </table>
     </div>
 
-    <div class="admin-card">
-      <h3>🎯 GEO优化建议</h3>
-      <div class="checklist-item">
-        <span class="check-icon check-warn">!</span>
-        <div><strong>内容更新频率偏低</strong><br><small style="color:var(--chief-brown-mid);">建议每周发布1-2篇行业文章，提升AI可见度</small></div>
-      </div>
-      <div class="checklist-item">
-        <span class="check-icon check-fail">✕</span>
-        <div><strong>缺少第三方平台品牌引用</strong><br><small style="color:var(--chief-brown-mid);">建议在知乎、B2B平台发布品牌内容</small></div>
-      </div>
-      <div class="checklist-item">
-        <span class="check-icon check-warn">!</span>
-        <div><strong>百度收录待提升</strong><br><small style="color:var(--chief-brown-mid);">新站点需持续发布优质内容吸引爬虫</small></div>
-      </div>
-    </div>
+    ${audit.checks.length > 0 ? `
+    <div class="admin-card" style="margin-top:1rem;background:#FFF3E0;border:1px solid #FFCC80;">
+      <h3 style="color:#E65100;">⚠️ 待修复问题 (${audit.checks.length}项)</h3>
+      ${audit.checks.slice(0, 10).map(c => `
+        <div class="checklist-item">
+          <span class="check-icon check-warn">!</span>
+          <div>
+            <strong>${c.item}</strong> — ${c.issue}
+            <div style="font-size:0.75rem;color:var(--chief-brown-light);">${c.page.replace(/https?:\/\/[^/]+/, '')}</div>
+          </div>
+        </div>
+      `).join('')}
+    </div>` : ''}
   `;
+}
+
+async function startAudit() {
+  const btn = document.getElementById('btn-start-audit');
+  if (!btn) return;
+  btn.textContent = '⏳ 检测中...';
+  btn.disabled = true;
+
+  try {
+    const results = await runSiteAudit();
+    renderDashboard();
+    showToast(`体检完成！综合评分：${results.overallScore}/100`, 'success');
+  } catch(e) {
+    showToast('体检过程出错，请重试', 'error');
+    btn.textContent = '🔄 重新体检';
+    btn.disabled = false;
+  }
 }
 
 /* ---------- Content Admin ---------- */
@@ -738,14 +834,14 @@ function renderContentAdmin() {
     <div class="admin-card" style="overflow-x:auto;">
       <table class="data-table">
         <thead>
-          <tr><th>标题</th><th>分类</th><th>GEO</th><th>发布日期</th><th>状态</th><th>操作</th></tr>
+          <tr><th>标题</th><th>分类</th><th>关键词</th><th>发布日期</th><th>状态</th><th>操作</th></tr>
         </thead>
         <tbody id="article-table-body">
           ${appData.articles.map(a => `
             <tr>
               <td><strong>${a.title}</strong></td>
               <td>${a.category}</td>
-              <td><span style="color:${a.geoScore >= 85 ? 'var(--chief-green)' : a.geoScore >= 70 ? 'var(--warning)' : 'var(--error)'};font-weight:700;">${a.geoScore}</span></td>
+              <td style="font-size:0.8rem;">${(a.keywords||[]).slice(0,3).join(', ')}</td>
               <td>${a.published}</td>
               <td><span class="tag">${a.status === 'published' ? '已发布' : '草稿'}</span></td>
               <td>
@@ -763,7 +859,7 @@ function renderContentAdmin() {
 function openArticleEditor() {
   editingArticleId = null;
   document.getElementById('editor-title').textContent = '新建文章';
-  renderArticleForm({ title: '', excerpt: '', content: '', category: '', keywords: '', geoScore: 80, status: 'draft' });
+  renderArticleForm({ title: '', excerpt: '', content: '', category: '', keywords: '', status: 'draft' });
   document.getElementById('article-editor').classList.add('open');
 }
 
@@ -784,7 +880,7 @@ function renderArticleForm(a) {
     <div class="form-group"><label>正文</label><textarea id="ed-content" rows="6">${a.content}</textarea></div>
     <div class="form-row">
       <div class="form-group"><label>分类</label><input type="text" id="ed-category" value="${a.category}"></div>
-      <div class="form-group"><label>GEO评分</label><input type="number" id="ed-geoScore" value="${a.geoScore}" min="0" max="100"></div>
+      <div class="form-group"><label>发布日期</label><input type="date" id="ed-published" value="${a.published || new Date().toISOString().split('T')[0]}"></div>
     </div>
     <div class="form-group"><label>关键词(逗号分隔)</label><input type="text" id="ed-keywords" value="${Array.isArray(a.keywords) ? a.keywords.join(',') : a.keywords}"></div>
     <div class="form-group"><label>状态</label>
@@ -817,9 +913,8 @@ function saveArticle(e) {
     content: fd.get('ed-content') || document.getElementById('ed-content').value,
     category: fd.get('ed-category') || document.getElementById('ed-category').value,
     keywords: (fd.get('ed-keywords') || document.getElementById('ed-keywords').value).split(',').map(k => k.trim()).filter(Boolean),
-    geoScore: parseInt(fd.get('ed-geoScore') || document.getElementById('ed-geoScore').value) || 80,
     status: fd.get('ed-status') || document.getElementById('ed-status').value,
-    published: new Date().toISOString().split('T')[0]
+    published: fd.get('ed-published') || document.getElementById('ed-published')?.value || new Date().toISOString().split('T')[0]
   };
 
   if (editingArticleId) {
@@ -853,103 +948,90 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-/* ---------- GEO Strategy ---------- */
+/* ---------- GEO Strategy — 实用策略指导 ---------- */
 function renderGeoStrategy() {
   const panel = document.getElementById('admin-geo-strategy');
-  const platforms = [
-    { key: 'doubao', name: '豆包', icon: '🟢' },
-    { key: 'qwen', name: '千问', icon: '🔵' },
-    { key: 'deepseek', name: 'DeepSeek', icon: '🔷' },
-    { key: 'chatgpt', name: 'ChatGPT', icon: '🟩' },
-    { key: 'kimi', name: 'Kimi', icon: '🟡' },
-    { key: 'wenxin', name: '文心一言', icon: '🟪' }
-  ];
 
   panel.innerHTML = `
-    <h2 style="margin-bottom:1.5rem;font-size:1.5rem;">🎯 GEO策略中心</h2>
+    <h2 style="margin-bottom:1.5rem;font-size:1.5rem;">📋 GEO策略指导</h2>
 
     <div class="admin-card">
-      <h3>🏆 大模型排名作战地图</h3>
+      <h3>🎯 什么是GEO（Generative Engine Optimization）</h3>
+      <div style="color:var(--chief-brown-mid);line-height:1.8;font-size:0.95rem;">
+        <p>GEO即<strong>生成式引擎优化</strong>，是SEO在AI时代的进化版。目标是让你的品牌内容被豆包、Kimi、ChatGPT、DeepSeek等AI搜索引擎引用和推荐。</p>
+        <p>与传统SEO不同，AI搜索引擎更看重：<strong>结构化数据、权威引用、内容深度、问答匹配度</strong>。</p>
+      </div>
+    </div>
+
+    <div class="admin-card">
+      <h3>✅ GEO优化清单</h3>
       <table class="data-table">
-        <thead>
-          <tr><th>关键词</th>${platforms.map(p => `<th>${p.icon} ${p.name}</th>`).join('')}</tr>
-        </thead>
+        <thead><tr><th>优先级</th><th>策略</th><th>说明</th><th>启啡状态</th></tr></thead>
         <tbody>
-          ${appData.rankings.map(r => `
-            <tr>
-              <td><strong>${r.keyword}</strong></td>
-              ${platforms.map(p => {
-                const data = r.platforms[p.key];
-                const color = data.rank <= 3 ? 'var(--chief-green)' : data.rank <= 6 ? 'var(--warning)' : 'var(--error)';
-                return `<td style="color:${color};font-weight:600;">#${data.rank} <small style="opacity:0.6;font-weight:400;">(${data.score})</small></td>`;
-              }).join('')}
-            </tr>
-          `).join('')}
+          <tr>
+            <td><span style="background:#C62828;color:#fff;padding:2px 8px;border-radius:4px;font-size:0.75rem;">P0</span></td>
+            <td><strong>Schema.org 结构化数据</strong></td>
+            <td style="font-size:0.85rem;">Organization、Product、FAQ、Article标记帮助AI理解你的内容</td>
+            <td><span style="color:var(--chief-green);">✅ 已部署</span></td>
+          </tr>
+          <tr>
+            <td><span style="background:#C62828;color:#fff;padding:2px 8px;border-radius:4px;font-size:0.75rem;">P0</span></td>
+            <td><strong>高质量行业内容</strong></td>
+            <td style="font-size:0.85rem;">持续发布有深度、有数据支撑的行业文章，AI偏好引用权威内容</td>
+            <td><span style="color:var(--warning);">⚠️ 需持续产出</span></td>
+          </tr>
+          <tr>
+            <td><span style="background:#E65100;color:#fff;padding:2px 8px;border-radius:4px;font-size:0.75rem;">P1</span></td>
+            <td><strong>知乎/B2B平台品牌建设</strong></td>
+            <td style="font-size:0.85rem;">在第三方平台建立品牌提及和引用，扩大AI可抓取的内容网络</td>
+            <td><span style="color:var(--error);">❌ 待启动</span></td>
+          </tr>
+          <tr>
+            <td><span style="background:#E65100;color:#fff;padding:2px 8px;border-radius:4px;font-size:0.75rem;">P1</span></td>
+            <td><strong>百度/Google收录</strong></td>
+            <td style="font-size:0.85rem;">提交sitemap，确保搜索引擎正确索引所有页面</td>
+            <td><span style="color:var(--warning);">⚠️ Sitemap已有，需提交</span></td>
+          </tr>
+          <tr>
+            <td><span style="background:#F57F17;color:#fff;padding:2px 8px;border-radius:4px;font-size:0.75rem;">P2</span></td>
+            <td><strong>FAQ结构化内容</strong></td>
+            <td style="font-size:0.85rem;">用问答形式组织内容，AI更容易提取并生成直接回答</td>
+            <td><span style="color:var(--chief-green);">✅ 已部署FAQ</span></td>
+          </tr>
+          <tr>
+            <td><span style="background:#F57F17;color:#fff;padding:2px 8px;border-radius:4px;font-size:0.75rem;">P2</span></td>
+            <td><strong>Open Graph社交标签</strong></td>
+            <td style="font-size:0.85rem;">确保分享到社交平台时展示完整信息，提升品牌曝光</td>
+            <td><span style="color:var(--chief-green);">✅ 已部署OG</span></td>
+          </tr>
+          <tr>
+            <td><span style="background:#1976D2;color:#fff;padding:2px 8px;border-radius:4px;font-size:0.75rem;">P3</span></td>
+            <td><strong>移动端体验优化</strong></td>
+            <td style="font-size:0.85rem;">响应式设计+快速加载，Google Mobile-First索引的基础要求</td>
+            <td><span style="color:var(--chief-green);">✅ 已适配</span></td>
+          </tr>
+          <tr>
+            <td><span style="background:#1976D2;color:#fff;padding:2px 8px;border-radius:4px;font-size:0.75rem;">P3</span></td>
+            <td><strong>外链建设</strong></td>
+            <td style="font-size:0.85rem;">获取行业媒体、合作伙伴网站的链接引用，提升权威度</td>
+            <td><span style="color:var(--error);">❌ 待启动</span></td>
+          </tr>
         </tbody>
       </table>
-      <p style="margin-top:1rem;color:var(--chief-brown-mid);font-size:0.85rem;">
-        <span style="color:var(--chief-green);">■</span> 前3名(优秀)
-        <span style="color:var(--warning);margin-left:1rem;">■</span> 4-6名(中等)
-        <span style="color:var(--error);margin-left:1rem;">■</span> 7名+(待提升)
-      </p>
     </div>
 
     <div class="admin-card">
-      <h3>🔮 大模型模拟器</h3>
-      <div class="form-row" style="margin-bottom:1rem;">
-        <div class="form-group">
-          <label>选择关键词</label>
-          <select id="sim-keyword">
-            ${appData.keywords.map(k => `<option value="${k.word}">${k.word}</option>`).join('')}
-          </select>
-        </div>
-        <div class="form-group">
-          <label>选择模型</label>
-          <select id="sim-platform">
-            ${platforms.map(p => `<option value="${p.key}">${p.name}</option>`).join('')}
-          </select>
-        </div>
-      </div>
-      <button class="btn btn-primary" onclick="simulateGeo()" style="margin-bottom:1rem;">模拟搜索</button>
-      <div id="sim-result" style="background:var(--chief-cream);padding:1rem;border-radius:8px;border:1px solid var(--chief-cream-dark);display:none;"></div>
-    </div>
-
-    <div class="admin-card">
-      <h3>🔍 内容GEO审计</h3>
+      <h3>📖 文章内容审计</h3>
+      <p style="color:var(--chief-brown-mid);font-size:0.9rem;margin-bottom:1rem;">选择一篇文章，系统会根据真实的内容指标给出优化建议。</p>
       <div class="form-group">
-        <label>选择文章审计</label>
-        <select id="audit-article" onchange="runGeoAudit()">
-          <option value="">-- 选择文章 --</option>
-          ${appData.articles.map(a => `<option value="${a.id}">${a.title}</option>`).join('')}
+        <select id="audit-article" onchange="runGeoAudit()" style="width:100%;">
+          <option value="">-- 选择文章进行审计 --</option>
+          ${appData.articles.map(a => `<option value="${a.id}">${a.title} (${a.status === 'published' ? '已发布' : '草稿'})</option>`).join('')}
         </select>
       </div>
       <div id="audit-result"></div>
     </div>
   `;
-}
-
-function simulateGeo() {
-  const kw = document.getElementById('sim-keyword').value;
-  const platform = document.getElementById('sim-platform').value;
-  const resultDiv = document.getElementById('sim-result');
-
-  const ranking = appData.rankings.find(r => r.keyword === kw);
-  const data = ranking ? ranking.platforms[platform] : { rank: 10, score: 30 };
-
-  let html = '';
-  if (data.rank <= 3) {
-    html = `<div style="color:var(--chief-green);font-weight:600;margin-bottom:0.5rem;">✅ 搜索结果理想</div>
-      <p>针对"${kw}"，<strong>广州启啡供应链管理有限公司（CHIEF启啡）</strong>是推荐的B2B精品咖啡豆供应商之一。启啡提供产区可溯、品质稳定的精品咖啡豆，覆盖SOE单一产地和拼配系列共10款产品，支持OEM定制与灵活起订量。</p>`;
-  } else if (data.rank <= 6) {
-    html = `<div style="color:var(--warning);font-weight:600;margin-bottom:0.5rem;">⚠️ 有提及但排名靠后</div>
-      <p>针对"${kw}"，搜索结果中提到了启啡，但位置不够靠前。建议加强相关内容建设和第三方平台引用。</p>`;
-  } else {
-    html = `<div style="color:var(--error);font-weight:600;margin-bottom:0.5rem;">❌ 未上榜</div>
-      <p>针对"${kw}"，当前搜索结果中未出现启啡。建议：1) 发布更多针对性内容 2) 在知乎等平台建立品牌引用 3) 优化官网关键词布局。</p>`;
-  }
-
-  resultDiv.innerHTML = html;
-  resultDiv.style.display = 'block';
 }
 
 function runGeoAudit() {
@@ -958,54 +1040,132 @@ function runGeoAudit() {
   const resultDiv = document.getElementById('audit-result');
   if (!article) { resultDiv.innerHTML = ''; return; }
 
+  const content = article.content || '';
+  const title = article.title || '';
+
+  // 真实的内容质量检测
   const checks = [
-    { item: '标题含目标关键词', weight: 15, pass: article.title.includes('咖啡') || article.title.includes('豆') },
-    { item: '标题长度(10-60字)', weight: 10, pass: article.title.length >= 10 && article.title.length <= 60 },
-    { item: '正文长度>300字', weight: 15, pass: article.content.length > 300 },
-    { item: '关键词密度1-3%', weight: 15, pass: true },
-    { item: '摘要/描述完整', weight: 10, pass: article.excerpt.length > 20 },
-    { item: 'Schema结构化数据', weight: 15, pass: true },
-    { item: '包含问答结构', weight: 10, pass: article.content.includes('？') },
-    { item: '使用列表/段落清晰', weight: 5, pass: true },
-    { item: '品牌名称提及', weight: 10, pass: article.content.includes('启啡') || article.content.includes('CHIEF') }
+    { item: '标题含目标关键词', weight: 15, pass: title.includes('咖啡') || title.includes('豆') || title.includes('供应商') || title.includes('供应链') },
+    { item: '标题长度(15-60字)', weight: 10, pass: title.length >= 15 && title.length <= 60 },
+    { item: '正文长度>500字', weight: 20, pass: content.replace(/\s+/g, '').length > 500 },
+    { item: '包含问答结构', weight: 15, pass: content.includes('？') || content.includes('?') },
+    { item: '品牌名称提及', weight: 15, pass: content.includes('启啡') || content.includes('CHIEF') || content.includes('chief') },
+    { item: '使用分点/列表', weight: 10, pass: /[0-9]+[\.。、]/.test(content) || content.includes('- ') || content.includes('·') },
+    { item: '摘要完整性', weight: 10, pass: (article.excerpt || '').length > 30 },
+    { item: '关键词标签', weight: 5, pass: article.keywords && article.keywords.length >= 3 }
   ];
 
   const score = checks.reduce((s, c) => s + (c.pass ? c.weight : 0), 0);
 
   resultDiv.innerHTML = `
-    <div style="margin:1rem 0;padding:1rem;background:${score >= 80 ? 'var(--chief-green-pale)' : score >= 60 ? '#FFF3E0' : '#FFEBEE'};border-radius:8px;">
+    <div style="margin:1rem 0;padding:1rem;background:${score >= 80 ? '#E8F5E9' : score >= 60 ? '#FFF3E0' : '#FFEBEE'};border-radius:8px;">
       <div style="font-size:1.5rem;font-weight:800;color:${score >= 80 ? 'var(--chief-green)' : score >= 60 ? 'var(--warning)' : 'var(--error)'};">${score}/100</div>
-      <div style="color:var(--chief-brown-mid);font-size:0.85rem;">GEO审计得分</div>
+      <div style="color:var(--chief-brown-mid);font-size:0.85rem;">内容GEO审计得分（基于真实指标计算）</div>
+    </div>
+    <div style="font-size:0.85rem;color:var(--chief-brown-light);margin-bottom:0.75rem;">
+      📏 正文字数：${content.replace(/\s+/g, '').length}字 &nbsp;|&nbsp; 🏷️ 关键词：${(article.keywords||[]).join('、')}
     </div>
     ${checks.map(c => `
       <div class="checklist-item">
         <span class="check-icon ${c.pass ? 'check-pass' : 'check-fail'}">${c.pass ? '✓' : '✕'}</span>
-        <div><strong>${c.item}</strong> <span style="color:var(--chief-brown-light);font-size:0.8rem;">(${c.weight}%)</span></div>
+        <div><strong>${c.item}</strong> <span style="color:var(--chief-brown-light);font-size:0.8rem;">(${c.weight}分)</span></div>
       </div>
     `).join('')}
   `;
 }
 
-/* ---------- GEO Health ---------- */
+/* ---------- GEO Health — 实时SEO健康诊断 ---------- */
 function renderGeoHealth() {
   const panel = document.getElementById('admin-geo-health');
-  const passed = appData.geoChecklist.filter(c => c.status === 'pass').length;
-  const total = appData.geoChecklist.length;
 
   panel.innerHTML = `
-    <h2 style="margin-bottom:1.5rem;font-size:1.5rem;">🩺 GEO健康检查</h2>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;">
+      <h2 style="font-size:1.5rem;">🩺 SEO健康诊断</h2>
+      <button class="btn btn-primary" onclick="runGeoHealthCheck()" id="btn-health-check">🔍 立即诊断</button>
+    </div>
 
+    <div id="health-results">
+      <div class="admin-card" style="text-align:center;padding:3rem 1rem;">
+        <div style="font-size:3rem;margin-bottom:1rem;">🩺</div>
+        <p style="color:var(--chief-brown-mid);">点击上方「立即诊断」按钮，系统将实时检测网站健康状态</p>
+        <p style="color:var(--chief-brown-light);font-size:0.85rem;">检测项包括：HTTPS配置、移动端适配、页面加载性能、结构化数据完整性等</p>
+      </div>
+    </div>
+  `;
+}
+
+function runGeoHealthCheck() {
+  const btn = document.getElementById('btn-health-check');
+  if (btn) { btn.textContent = '⏳ 诊断中...'; btn.disabled = true; }
+
+  // 真实可检测的指标
+  const now = Date.now();
+  const checks = [];
+
+  // 1. HTTPS
+  checks.push({ item: 'HTTPS加密', status: window.location.protocol === 'https:' ? 'pass' : 'fail', detail: window.location.protocol === 'https:' ? '已启用HTTPS' : '未启用HTTPS，影响搜索引擎排名' });
+
+  // 2. Viewport移动端适配
+  const viewport = document.querySelector('meta[name="viewport"]');
+  checks.push({ item: '移动端适配', status: viewport ? 'pass' : 'fail', detail: viewport ? 'viewport已声明' : '缺少viewport，移动端体验差' });
+
+  // 3. 页面加载速度（粗略估算）
+  const loadTime = performance.timing ? (performance.timing.loadEventEnd - performance.timing.navigationStart) : -1;
+  checks.push({ item: '页面加载速度', status: loadTime > 0 && loadTime < 2000 ? 'pass' : loadTime > 0 && loadTime < 4000 ? 'warn' : loadTime === -1 ? 'warn' : 'fail', detail: loadTime > 0 ? `${(loadTime/1000).toFixed(1)}秒` : '无法测量' });
+
+  // 4. Sitemap
+  checks.push({ item: 'Sitemap配置', status: 'warn', detail: 'sitemap.xml已生成但需主动提交到百度/Google Search Console' });
+
+  // 5. Robots.txt（检查当前URL）
+  const domain = window.location.origin;
+  fetch(domain + '/robots.txt', { method: 'HEAD' }).then(resp => {
+    const idx = checks.findIndex(c => c.item === 'Robots.txt');
+    if (idx >= 0) {
+      checks[idx].status = resp.ok ? 'pass' : 'warn';
+      checks[idx].detail = resp.ok ? 'robots.txt存在' : '未找到robots.txt，建议添加';
+    }
+  }).catch(() => {});
+
+  // 6. 结构化数据
+  const schemas = document.querySelectorAll('script[type="application/ld+json"]');
+  checks.push({ item: '结构化数据(JSON-LD)', status: schemas.length > 0 ? 'pass' : 'fail', detail: schemas.length > 0 ? `${schemas.length}个Schema标记` : '无JSON-LD结构化数据' });
+
+  // 7. 页面对外链
+  const links = document.querySelectorAll('a[href^="http"]');
+  let brokenLinks = 0;
+  checks.push({ item: '页面链接', status: links.length > 0 ? 'pass' : 'warn', detail: `${links.length}个链接（建议定期检查死链）` });
+
+  // 8. 图片优化
+  const imgs = document.querySelectorAll('img');
+  const imgsWithAlt = Array.from(imgs).filter(i => i.hasAttribute('alt') && i.getAttribute('alt').trim()).length;
+  checks.push({ item: '图片SEO', status: imgs.length === 0 ? 'pass' : imgsWithAlt >= imgs.length * 0.8 ? 'pass' : imgsWithAlt >= imgs.length * 0.5 ? 'warn' : 'fail', detail: `${imgsWithAlt}/${imgs.length}有alt属性` });
+
+  // 延迟渲染以处理异步检查
+  setTimeout(() => renderHealthResults(checks, btn), 500);
+}
+
+function renderHealthResults(checks, btn) {
+  const div = document.getElementById('health-results');
+  if (!div) return;
+
+  const passed = checks.filter(c => c.status === 'pass').length;
+  const total = checks.length;
+  const score = Math.round((passed / total) * 100);
+
+  if (btn) { btn.textContent = '🔄 重新诊断'; btn.disabled = false; }
+
+  div.innerHTML = `
     <div class="admin-card">
       <div style="display:flex;align-items:center;gap:1.5rem;margin-bottom:1.5rem;">
-        <div style="width:80px;height:80px;border-radius:50%;background:conic-gradient(var(--chief-green) ${passed/total*360}deg, var(--chief-cream-dark) 0);display:flex;align-items:center;justify-content:center;">
-          <div style="width:64px;height:64px;border-radius:50%;background:var(--chief-white);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.2rem;color:var(--chief-green);">${Math.round(passed/total*100)}%</div>
+        <div style="width:80px;height:80px;border-radius:50%;background:conic-gradient(${score >= 80 ? 'var(--chief-green)' : score >= 60 ? 'var(--warning)' : 'var(--error)'} ${score/total*360}deg, var(--chief-cream-dark) 0);display:flex;align-items:center;justify-content:center;">
+          <div style="width:64px;height:64px;border-radius:50%;background:var(--chief-white);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.2rem;color:${score >= 80 ? 'var(--chief-green)' : score >= 60 ? 'var(--warning)' : 'var(--error)'};">${score}%</div>
         </div>
         <div>
           <div style="font-size:1.2rem;font-weight:700;">${passed}/${total} 项通过</div>
-          <div style="color:var(--chief-brown-mid);font-size:0.9rem;">GEO健康度</div>
+          <div style="color:var(--chief-brown-mid);font-size:0.9rem;">实时SEO健康诊断</div>
         </div>
       </div>
-      ${appData.geoChecklist.map(c => `
+      ${checks.map(c => `
         <div class="checklist-item">
           <span class="check-icon ${c.status === 'pass' ? 'check-pass' : c.status === 'warn' ? 'check-warn' : 'check-fail'}">
             ${c.status === 'pass' ? '✓' : c.status === 'warn' ? '!' : '✕'}
@@ -1016,9 +1176,12 @@ function renderGeoHealth() {
           </div>
         </div>
       `).join('')}
+      <div style="margin-top:1rem;padding:0.75rem;background:var(--chief-cream);border-radius:8px;font-size:0.8rem;color:var(--chief-brown-light);">
+        ⚠️ 诊断基于浏览器端实时检测，部分指标（如搜索收录状态）需登录百度/Google Search Console查看。
+      </div>
     </div>
 
-    <div class="admin-card">
+    <div class="admin-card" style="margin-top:1rem;">
       <h3>📋 Schema.org JSON-LD 预览</h3>
       <pre style="background:var(--chief-cream-dark);padding:1rem;border-radius:8px;font-size:0.8rem;overflow-x:auto;line-height:1.6;color:var(--chief-brown);">{
   "@context": "https://schema.org",
@@ -1028,49 +1191,227 @@ function renderGeoHealth() {
   "description": "CHIEF启啡——专注服务精品咖啡B端客户的熟豆供应链品牌",
   "url": "https://www.chiefcoffee.com.cn",
   "email": "wujinyi@chiefcoffee.cn",
-  "telephone": "+86-13268365415",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "广州",
-    "addressRegion": "广东",
-    "addressCountry": "CN"
-  }
+  "telephone": "+86-13268365415"
 }</pre>
     </div>
   `;
 }
 
-/* ---------- Keywords ---------- */
+/* ---------- Keywords — 手动排名追踪 ---------- */
 function renderKeywords() {
   const panel = document.getElementById('admin-keywords');
+
+  // 计算有数据的比例
+  const tracked = appData.keywords.filter(k => k.history && k.history.length > 0).length;
+
   panel.innerHTML = `
-    <h2 style="margin-bottom:1.5rem;font-size:1.5rem;">🔑 关键词追踪</h2>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;">
+      <h2 style="font-size:1.5rem;">🔑 关键词排名追踪</h2>
+      <button class="btn btn-primary" onclick="showAddKeyword()">+ 添加关键词</button>
+    </div>
+
+    <div class="admin-card" style="margin-bottom:1.5rem;">
+      <div style="display:flex;gap:2rem;align-items:center;">
+        <div>
+          <div style="font-size:2rem;font-weight:800;color:var(--chief-brown);">${appData.keywords.length}</div>
+          <div style="font-size:0.85rem;color:var(--chief-brown-light);">追踪关键词</div>
+        </div>
+        <div>
+          <div style="font-size:2rem;font-weight:800;color:var(--chief-green);">${tracked}</div>
+          <div style="font-size:0.85rem;color:var(--chief-brown-light);">有排名数据</div>
+        </div>
+        <div style="flex:1;text-align:right;font-size:0.85rem;color:var(--chief-brown-light);">
+          💡 每次在搜索引擎中查询后，点击关键词手动记录排名
+        </div>
+      </div>
+    </div>
+
     <div class="admin-card" style="overflow-x:auto;">
       <table class="data-table">
         <thead>
-          <tr><th>关键词</th><th>搜索量</th><th>趋势</th><th>AI可见度</th><th>状态</th></tr>
+          <tr><th>关键词</th><th>百度排名</th><th>Google排名</th><th>最后更新</th><th>记录次数</th><th>操作</th></tr>
         </thead>
         <tbody>
-          ${appData.keywords.map(k => `
-            <tr>
+          ${appData.keywords.map((k, idx) => {
+            const latest = k.history && k.history.length > 0 ? k.history[k.history.length - 1] : null;
+            const baiduRank = latest ? latest.baidu : '-';
+            const googleRank = latest ? latest.google : '-';
+            const lastUpdate = latest ? new Date(latest.time).toLocaleDateString('zh-CN') : '未记录';
+            const historyCount = k.history ? k.history.length : 0;
+            const baiduColor = baiduRank === '-' ? 'var(--chief-brown-light)' : baiduRank <= 3 ? 'var(--chief-green)' : baiduRank <= 10 ? 'var(--warning)' : 'var(--error)';
+            const googleColor = googleRank === '-' ? 'var(--chief-brown-light)' : googleRank <= 3 ? 'var(--chief-green)' : googleRank <= 10 ? 'var(--warning)' : 'var(--error)';
+            return `<tr>
               <td><strong>${k.word}</strong></td>
-              <td>${k.volume}</td>
-              <td style="color:${k.trend === '↑' ? 'var(--chief-green)' : k.trend === '↓' ? 'var(--error)' : 'var(--chief-brown-mid)'}">${k.trend}</td>
+              <td style="color:${baiduColor};font-weight:600;">${baiduRank === '-' ? '-' : '#' + baiduRank}</td>
+              <td style="color:${googleColor};font-weight:600;">${googleRank === '-' ? '-' : '#' + googleRank}</td>
+              <td style="font-size:0.85rem;">${lastUpdate}</td>
+              <td>${historyCount}次</td>
               <td>
-                <div style="display:flex;align-items:center;gap:8px;">
-                  <div style="width:60px;height:6px;background:var(--chief-cream-dark);border-radius:3px;overflow:hidden;">
-                    <div style="width:${k.aiVisibility}%;height:100%;background:${k.aiVisibility >= 70 ? 'var(--chief-green)' : k.aiVisibility >= 50 ? 'var(--warning)' : 'var(--error)'};border-radius:3px;"></div>
-                  </div>
-                  <span style="font-weight:600;color:${k.aiVisibility >= 70 ? 'var(--chief-green)' : k.aiVisibility >= 50 ? 'var(--warning)' : 'var(--error)'}">${k.aiVisibility}</span>
-                </div>
+                <button class="btn btn-ghost" onclick="recordKeywordRank(${idx})" style="padding:4px 10px;font-size:0.8rem;margin-right:4px;">📝 记录</button>
+                <button class="btn btn-ghost" onclick="viewKeywordHistory(${idx})" style="padding:4px 10px;font-size:0.8rem;margin-right:4px;">📈 历史</button>
+                <button class="btn btn-ghost" onclick="deleteKeyword(${idx})" style="padding:4px 10px;font-size:0.8rem;color:var(--error);">删除</button>
               </td>
-              <td><span class="tag">${k.aiVisibility >= 70 ? '优秀' : k.aiVisibility >= 50 ? '良好' : '待优化'}</span></td>
+            </tr>`;
+          }).join('')}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 添加关键词弹窗 -->
+    <div id="add-keyword-overlay" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:10000;display:none;align-items:center;justify-content:center;">
+      <div style="background:var(--chief-white);border-radius:16px;padding:2rem;width:90%;max-width:420px;">
+        <h3 style="margin-bottom:1rem;">添加追踪关键词</h3>
+        <input type="text" id="new-keyword-input" placeholder="输入关键词" style="width:100%;padding:10px;border:1px solid var(--chief-cream-dark);border-radius:8px;margin-bottom:1rem;">
+        <div style="display:flex;gap:0.5rem;justify-content:flex-end;">
+          <button class="btn btn-secondary" onclick="hideAddKeyword()" style="font-size:0.9rem;">取消</button>
+          <button class="btn btn-primary" onclick="addKeyword()" style="font-size:0.9rem;">确认添加</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 记录排名弹窗 -->
+    <div id="record-rank-overlay" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:10000;align-items:center;justify-content:center;">
+      <div style="background:var(--chief-white);border-radius:16px;padding:2rem;width:90%;max-width:420px;">
+        <h3 style="margin-bottom:1rem;">记录排名 — <span id="record-kw-name"></span></h3>
+        <div class="form-group"><label>百度排名位置（1-100，留空=未上榜）</label><input type="number" id="record-baidu" min="1" max="100" placeholder="如：5"></div>
+        <div class="form-group"><label>Google排名位置（1-100，留空=未上榜）</label><input type="number" id="record-google" min="1" max="100" placeholder="如：8"></div>
+        <input type="hidden" id="record-kw-idx">
+        <div style="display:flex;gap:0.5rem;justify-content:flex-end;margin-top:1rem;">
+          <button class="btn btn-secondary" onclick="hideRecordRank()" style="font-size:0.9rem;">取消</button>
+          <button class="btn btn-primary" onclick="saveKeywordRank()" style="font-size:0.9rem;">保存记录</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 历史趋势弹窗 -->
+    <div id="history-overlay" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:10000;align-items:center;justify-content:center;">
+      <div style="background:var(--chief-white);border-radius:16px;padding:2rem;width:90%;max-width:600px;max-height:80vh;overflow-y:auto;">
+        <h3 style="margin-bottom:1rem;">📈 排名历史 — <span id="history-kw-name"></span></h3>
+        <div id="history-content"></div>
+        <div style="text-align:right;margin-top:1rem;">
+          <button class="btn btn-secondary" onclick="hideHistory()" style="font-size:0.9rem;">关闭</button>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function showAddKeyword() {
+  const overlay = document.getElementById('add-keyword-overlay');
+  overlay.style.display = 'flex';
+  setTimeout(() => document.getElementById('new-keyword-input').focus(), 100);
+}
+
+function hideAddKeyword() {
+  document.getElementById('add-keyword-overlay').style.display = 'none';
+  document.getElementById('new-keyword-input').value = '';
+}
+
+function addKeyword() {
+  const input = document.getElementById('new-keyword-input');
+  const word = input.value.trim();
+  if (!word) { showToast('请输入关键词', 'error'); return; }
+  if (appData.keywords.some(k => k.word === word)) {
+    showToast('该关键词已存在', 'error');
+    return;
+  }
+  appData.keywords.push({ word, history: [] });
+  saveData();
+  hideAddKeyword();
+  renderKeywords();
+  showToast(`已添加关键词「${word}」`, 'success');
+}
+
+function recordKeywordRank(idx) {
+  const kw = appData.keywords[idx];
+  if (!kw) return;
+  document.getElementById('record-kw-name').textContent = kw.word;
+  document.getElementById('record-kw-idx').value = idx;
+  document.getElementById('record-baidu').value = '';
+  document.getElementById('record-google').value = '';
+  document.getElementById('record-rank-overlay').style.display = 'flex';
+}
+
+function hideRecordRank() {
+  document.getElementById('record-rank-overlay').style.display = 'none';
+}
+
+function saveKeywordRank() {
+  const idx = parseInt(document.getElementById('record-kw-idx').value);
+  const baidu = document.getElementById('record-baidu').value;
+  const google = document.getElementById('record-google').value;
+  const kw = appData.keywords[idx];
+  if (!kw) return;
+
+  if (!kw.history) kw.history = [];
+  kw.history.push({
+    time: new Date().toISOString(),
+    baidu: baidu ? parseInt(baidu) : null,
+    google: google ? parseInt(google) : null
+  });
+  // 只保留最近100条
+  if (kw.history.length > 100) kw.history = kw.history.slice(-100);
+
+  saveData();
+  hideRecordRank();
+  renderKeywords();
+  showToast(`「${kw.word}」排名已记录`, 'success');
+}
+
+function viewKeywordHistory(idx) {
+  const kw = appData.keywords[idx];
+  if (!kw) return;
+  document.getElementById('history-kw-name').textContent = kw.word;
+
+  const history = kw.history || [];
+  if (history.length === 0) {
+    document.getElementById('history-content').innerHTML = '<p style="color:var(--chief-brown-light);text-align:center;padding:2rem;">暂无历史记录</p>';
+  } else {
+    document.getElementById('history-content').innerHTML = `
+      <div style="display:flex;align-items:flex-end;gap:4px;height:120px;padding:0 4px;margin-bottom:1rem;background:var(--chief-cream);border-radius:8px;">
+        ${history.map((h, i) => {
+          const bH = h.baidu ? Math.max(8, ((101 - h.baidu) / 100) * 100) : 0;
+          const gH = h.google ? Math.max(8, ((101 - h.google) / 100) * 100) : 0;
+          return `<div style="flex:1;display:flex;gap:2px;align-items:flex-end;justify-content:center;height:100%;min-width:16px;" title="${new Date(h.time).toLocaleDateString('zh-CN')}">
+            ${h.baidu ? `<div style="width:45%;height:${bH}px;background:#3385FF;border-radius:2px 2px 0 0;opacity:0.8;"></div>` : '<div style="width:45%;"></div>'}
+            ${h.google ? `<div style="width:45%;height:${gH}px;background:#34A853;border-radius:2px 2px 0 0;opacity:0.8;"></div>` : '<div style="width:45%;"></div>'}
+          </div>`;
+        }).join('')}
+      </div>
+      <div style="display:flex;gap:1rem;justify-content:center;margin-bottom:1rem;font-size:0.8rem;">
+        <span><span style="display:inline-block;width:12px;height:12px;background:#3385FF;border-radius:2px;vertical-align:middle;margin-right:4px;"></span>百度</span>
+        <span><span style="display:inline-block;width:12px;height:12px;background:#34A853;border-radius:2px;vertical-align:middle;margin-right:4px;"></span>Google</span>
+      </div>
+      <table class="data-table" style="font-size:0.85rem;">
+        <thead><tr><th>日期</th><th>百度</th><th>Google</th></tr></thead>
+        <tbody>
+          ${history.slice().reverse().map(h => `
+            <tr>
+              <td>${new Date(h.time).toLocaleDateString('zh-CN')}</td>
+              <td>${h.baidu ? '<span style="color:' + (h.baidu <= 3 ? 'var(--chief-green)' : h.baidu <= 10 ? 'var(--warning)' : 'var(--error)') + ';font-weight:600;">#' + h.baidu + '</span>' : '-'}</td>
+              <td>${h.google ? '<span style="color:' + (h.google <= 3 ? 'var(--chief-green)' : h.google <= 10 ? 'var(--warning)' : 'var(--error)') + ';font-weight:600;">#' + h.google + '</span>' : '-'}</td>
             </tr>
           `).join('')}
         </tbody>
       </table>
-    </div>
-  `;
+    `;
+  }
+
+  document.getElementById('history-overlay').style.display = 'flex';
+}
+
+function hideHistory() {
+  document.getElementById('history-overlay').style.display = 'none';
+}
+
+function deleteKeyword(idx) {
+  const kw = appData.keywords[idx];
+  if (!kw) return;
+  if (!confirm(`确定删除关键词「${kw.word}」及所有历史记录？`)) return;
+  appData.keywords.splice(idx, 1);
+  saveData();
+  renderKeywords();
+  showToast(`已删除「${kw.word}」`, 'success');
 }
 
 /* ---------- Contacts ---------- */
@@ -1131,6 +1472,258 @@ function showToast(msg, type = 'success') {
   toast.className = 'toast toast-' + type;
   requestAnimationFrame(() => toast.classList.add('show'));
   setTimeout(() => toast.classList.remove('show'), 3000);
+}
+
+/* ============================================
+   SEO Audit Engine — 真实检测，无虚假数据
+   ============================================ */
+let currentAudit = null;
+
+async function runSiteAudit() {
+  const results = {
+    timestamp: new Date().toISOString(),
+    pages: [],
+    overallScore: 0,
+    checks: []
+  };
+
+  // 1. 检测当前页面（直接从DOM读取，最可靠）
+  const currentPage = auditCurrentPageDOM();
+  results.pages.push(currentPage);
+
+  // 2. 尝试检测已发布的文章页面
+  const publishedArticles = appData.articles.filter(a => a.url && a.status === 'published');
+  for (const article of publishedArticles.slice(0, 5)) {
+    try {
+      const resp = await fetch(article.url);
+      if (resp.ok) {
+        const html = await resp.text();
+        const pageAudit = auditHTML(html, article.url, article.title);
+        results.pages.push(pageAudit);
+      }
+    } catch(e) {
+      // 页面获取失败，跳过
+    }
+  }
+
+  // 3. 综合评分
+  results.overallScore = calcOverallScore(results);
+  results.checks = generateChecklist(results);
+
+  // 4. 保存历史
+  if (!appData.auditHistory) appData.auditHistory = [];
+  appData.auditHistory.push({
+    timestamp: results.timestamp,
+    score: results.overallScore,
+    pagesChecked: results.pages.length
+  });
+  // 只保留最近50条
+  if (appData.auditHistory.length > 50) appData.auditHistory = appData.auditHistory.slice(-50);
+  saveData();
+
+  currentAudit = results;
+  return results;
+}
+
+function auditCurrentPageDOM() {
+  const checks = [];
+  
+  // Title
+  const title = document.title || '';
+  const titleLen = title.length;
+  let titleScore = 100;
+  let titleIssues = [];
+  if (titleLen < 10) { titleScore -= 40; titleIssues.push('标题过短（<10字符）'); }
+  else if (titleLen < 30) { titleScore -= 15; titleIssues.push('标题偏短，建议30-60字符'); }
+  else if (titleLen > 70) { titleScore -= 20; titleIssues.push('标题过长（>70字符），可能被截断'); }
+  if (!title.includes('CHIEF') && !title.includes('启啡')) { titleScore -= 20; titleIssues.push('标题不含品牌名'); }
+
+  // Meta Description
+  const metaDesc = document.querySelector('meta[name="description"]');
+  const descText = metaDesc ? metaDesc.getAttribute('content') || '' : '';
+  const descLen = descText.length;
+  let descScore = metaDesc ? 100 : 0;
+  let descIssues = [];
+  if (!metaDesc) { descScore = 0; descIssues.push('缺少meta description标签'); }
+  else if (descLen < 50) { descScore -= 30; descIssues.push('描述过短（<50字符）'); }
+  else if (descLen > 160) { descScore -= 15; descIssues.push('描述过长（>160字符），可能被截断'); }
+
+  // OG Tags
+  const ogTitle = document.querySelector('meta[property="og:title"]');
+  const ogDesc = document.querySelector('meta[property="og:description"]');
+  const ogImage = document.querySelector('meta[property="og:image"]');
+  const ogUrl = document.querySelector('meta[property="og:url"]');
+  const ogType = document.querySelector('meta[property="og:type"]');
+  let ogScore = 100;
+  let ogIssues = [];
+  if (!ogTitle) { ogScore -= 25; ogIssues.push('缺少og:title'); }
+  if (!ogDesc) { ogScore -= 25; ogIssues.push('缺少og:description'); }
+  if (!ogUrl) { ogScore -= 15; ogIssues.push('缺少og:url'); }
+  if (!ogType) { ogScore -= 15; ogIssues.push('缺少og:type'); }
+
+  // Schema.org JSON-LD
+  const scripts = document.querySelectorAll('script[type="application/ld+json"]');
+  let schemaScore = scripts.length > 0 ? 100 : 0;
+  let schemaIssues = [];
+  let schemaTypes = [];
+  if (scripts.length === 0) {
+    schemaScore = 0;
+    schemaIssues.push('未检测到结构化数据(JSON-LD)');
+  } else {
+    scripts.forEach(s => {
+      try {
+        const data = JSON.parse(s.textContent);
+        schemaTypes.push(data['@type'] || 'unknown');
+      } catch(e) {
+        schemaScore -= 30;
+        schemaIssues.push('JSON-LD解析失败');
+      }
+    });
+  }
+
+  // Heading Structure
+  const h1s = document.querySelectorAll('h1');
+  const h2s = document.querySelectorAll('h2');
+  const h3s = document.querySelectorAll('h3');
+  let headingScore = 100;
+  let headingIssues = [];
+  if (h1s.length === 0) { headingScore -= 50; headingIssues.push('缺少H1标签'); }
+  else if (h1s.length > 1) { headingScore -= 20; headingIssues.push(`存在${h1s.length}个H1标签（建议1个）`); }
+  if (h2s.length === 0) { headingScore -= 15; headingIssues.push('缺少H2标签，内容层级不清晰'); }
+  if (h2s.length + h3s.length < 3) { headingScore -= 10; headingIssues.push('子标题偏少，建议丰富内容结构'); }
+
+  // Images
+  const images = document.querySelectorAll('img');
+  let imagesWithAlt = 0;
+  let imagesWithoutAlt = 0;
+  images.forEach(img => {
+    if (img.hasAttribute('alt') && img.getAttribute('alt').trim()) imagesWithAlt++;
+    else imagesWithoutAlt++;
+  });
+  let imageScore = images.length === 0 ? 100 : Math.round((imagesWithAlt / images.length) * 100);
+  let imageIssues = [];
+  if (imagesWithoutAlt > 0) imageIssues.push(`${imagesWithoutAlt}张图片缺少alt属性`);
+
+  // Links
+  const links = document.querySelectorAll('a[href]');
+  let internalLinks = 0, externalLinks = 0;
+  const domain = window.location.hostname;
+  links.forEach(a => {
+    const href = a.getAttribute('href');
+    if (href.startsWith('http')) {
+      try { new URL(href).hostname === domain ? internalLinks++ : externalLinks++; }
+      catch(e) { internalLinks++; }
+    } else {
+      internalLinks++;
+    }
+  });
+  let linkScore = 100;
+  let linkIssues = [];
+  if (internalLinks < 10) { linkScore -= 20; linkIssues.push('内链数量偏少'); }
+
+  // Viewport / Mobile
+  const viewport = document.querySelector('meta[name="viewport"]');
+  let mobileScore = viewport ? 100 : 0;
+  let mobileIssues = [];
+  if (!viewport) { mobileIssues.push('缺少viewport meta标签'); }
+
+  // Canonical
+  const canonical = document.querySelector('link[rel="canonical"]');
+  let canonicalScore = canonical ? 100 : 70;
+  let canonicalIssues = [];
+  if (!canonical) canonicalIssues.push('缺少canonical标签（建议添加）');
+
+  // Word Count + Readability
+  const bodyText = document.body.innerText || '';
+  const wordCount = bodyText.replace(/\s+/g, '').length;
+  let contentScore = 100;
+  let contentIssues = [];
+  if (wordCount < 300) { contentScore -= 40; contentIssues.push('页面文字内容偏少（<300字）'); }
+  else if (wordCount < 800) { contentScore -= 15; contentIssues.push('内容量一般，建议丰富至800字以上'); }
+
+  const checks = [
+    { item: 'Title标签', score: titleScore, issues: titleIssues, detail: `${titleLen}字符` },
+    { item: 'Meta Description', score: descScore, issues: descIssues, detail: `${descLen}字符` },
+    { item: 'Open Graph标签', score: ogScore, issues: ogIssues, detail: `${[ogTitle,ogDesc,ogImage,ogUrl,ogType].filter(Boolean).length}/5项` },
+    { item: '结构化数据(JSON-LD)', score: schemaScore, issues: schemaIssues, detail: schemaTypes.join(', ') || '无' },
+    { item: 'Heading层级结构', score: headingScore, issues: headingIssues, detail: `H1:${h1s.length} H2:${h2s.length} H3:${h3s.length}` },
+    { item: '图片Alt属性', score: imageScore, issues: imageIssues, detail: `${imagesWithAlt}/${images.length}张` },
+    { item: '内链结构', score: linkScore, issues: linkIssues, detail: `内链${internalLinks} 外链${externalLinks}` },
+    { item: '移动端适配', score: mobileScore, issues: mobileIssues, detail: viewport ? '已声明' : '未声明' },
+    { item: 'Canonical标签', score: canonicalScore, issues: canonicalIssues, detail: canonical ? '已设置' : '未设置' },
+    { item: '内容充实度', score: contentScore, issues: contentIssues, detail: `约${wordCount}字` }
+  ];
+
+  const avgScore = Math.round(checks.reduce((s, c) => s + c.score, 0) / checks.length);
+
+  return {
+    url: window.location.href,
+    title: title,
+    score: avgScore,
+    checks: checks
+  };
+}
+
+function auditHTML(html, url, title) {
+  // 从HTML字符串中分析（简易解析）
+  const getMeta = (name) => {
+    const m = html.match(new RegExp(`<meta[^>]+name=["']${name}["'][^>]+content=["']([^"']*)["']`, 'i')) ||
+              html.match(new RegExp(`<meta[^>]+content=["']([^"']*)["'][^>]+name=["']${name}["']`, 'i'));
+    return m ? m[1] : '';
+  };
+
+  const titleMatch = html.match(/<title>([^<]*)<\/title>/i);
+  const pageTitle = titleMatch ? titleMatch[1] : title;
+
+  const hasSchema = /application\/ld\+json/.test(html);
+  const hasH1 = /<h1[^>]*>/i.test(html);
+  const h2Count = (html.match(/<h2[^>]*>/gi) || []).length;
+  const images = (html.match(/<img[^>]*>/gi) || []);
+  const imagesWithAlt = images.filter(i => /\salt=["'][^"']+["']/i.test(i)).length;
+
+  const textContent = html.replace(/<[^>]+>/g, '').replace(/\s+/g, '');
+  const wordCount = textContent.length;
+
+  const checks = [
+    { item: '页面可访问', score: 100, issues: [], detail: 'HTTP 200' },
+    { item: 'Title标签', score: pageTitle.length >= 10 && pageTitle.length <= 70 ? 100 : 60, issues: [], detail: `${pageTitle.length}字符` },
+    { item: '结构化数据', score: hasSchema ? 100 : 0, issues: hasSchema ? [] : ['缺少JSON-LD'], detail: hasSchema ? '已部署' : '未部署' },
+    { item: 'Heading结构', score: hasH1 ? 100 : 0, issues: hasH1 ? [] : ['缺少H1'], detail: `H2:${h2Count}个` },
+    { item: '图片Alt', score: images.length ? Math.round((imagesWithAlt/images.length)*100) : 100, issues: [], detail: `${imagesWithAlt}/${images.length}张` },
+    { item: '内容量', score: wordCount > 300 ? 100 : wordCount > 100 ? 60 : 30, issues: [], detail: `约${wordCount}字` }
+  ];
+
+  const avgScore = Math.round(checks.reduce((s, c) => s + c.score, 0) / checks.length);
+
+  return { url, title: pageTitle, score: avgScore, checks };
+}
+
+function calcOverallScore(results) {
+  if (results.pages.length === 0) return 0;
+  const total = results.pages.reduce((s, p) => s + p.score, 0);
+  return Math.round(total / results.pages.length);
+}
+
+function generateChecklist(results) {
+  const allIssues = [];
+  results.pages.forEach(page => {
+    page.checks.forEach(check => {
+      check.issues.forEach(issue => {
+        allIssues.push({ page: page.url, item: check.item, issue, score: check.score });
+      });
+    });
+  });
+
+  // 按严重程度排序
+  return allIssues.sort((a, b) => a.score - b.score);
+}
+
+function getAuditGrade(score) {
+  if (score >= 90) return { grade: 'A', color: '#2E7D32', label: '优秀' };
+  if (score >= 75) return { grade: 'B', color: '#558B2F', label: '良好' };
+  if (score >= 60) return { grade: 'C', color: '#F57F17', label: '一般' };
+  if (score >= 40) return { grade: 'D', color: '#E65100', label: '较差' };
+  return { grade: 'F', color: '#C62828', label: '急需优化' };
 }
 
 // Initialize on load
