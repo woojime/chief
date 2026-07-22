@@ -494,14 +494,40 @@ function toggleFaq(id) {
 }
 
 /* ============================================
-   Contact Form
+   Contact Form — Web3Forms Integration
    ============================================ */
-function submitContact(form) {
+const WEB3FORMS_KEY = '973e0bcf-c746-47e8-a909-3b8adce4da68';
+
+async function submitContact(form) {
+  const btn = form.querySelector('button[type="submit"]');
+  const originalText = btn.textContent;
+  btn.textContent = '提交中...';
+  btn.disabled = true;
+
   const fd = new FormData(form);
-  const data = Object.fromEntries(fd);
-  console.log('Contact form:', data);
-  showToast('提交成功！我们将在24小时内与您联系', 'success');
-  form.reset();
+  fd.append('access_key', WEB3FORMS_KEY);
+  fd.append('subject', 'CHIEF 启啡 - 新客户咨询');
+  fd.append('from_name', 'CHIEF 启啡官网');
+
+  try {
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: fd
+    });
+    const json = await res.json();
+
+    if (json.success) {
+      showToast('提交成功！我们将在24小时内与您联系', 'success');
+      form.reset();
+    } else {
+      showToast('提交失败，请拨打电话 13268365415 直接联系我们', 'error');
+    }
+  } catch (e) {
+    showToast('网络异常，请拨打电话 13268365415 直接联系我们', 'error');
+  }
+
+  btn.textContent = originalText;
+  btn.disabled = false;
 }
 
 /* ============================================
