@@ -1084,8 +1084,8 @@ function renderContacts() {
       <div class="admin-card" style="text-align:center;padding:3rem 1rem;">
         <div style="font-size:3rem;margin-bottom:1rem;">📭</div>
         <p style="color:var(--chief-brown-mid);margin-bottom:1rem;">暂无本地缓存的客户留言。</p>
-        <p style="color:var(--chief-brown-light);font-size:0.9rem;margin-bottom:1.5rem;">当有客户在你当前这台设备的浏览器上提交表单时，记录会出现在这里。<br>你也可以直接登录 Web3Forms 查看所有提交记录。</p>
-        <a href="https://app.web3forms.com" target="_blank" style="display:inline-block;padding:0.6rem 1.5rem;background:var(--chief-green);color:white;border-radius:8px;text-decoration:none;font-weight:600;">打开 Web3Forms 查看全部记录</a>
+        <p style="color:var(--chief-brown-light);font-size:0.9rem;margin-bottom:1.5rem;">当有客户在你当前这台设备的浏览器上提交表单时，记录会出现在这里。<br>Web3Forms 免费版没有网页管理后台，所有提交通过邮件通知。</p>
+        <p style="color:var(--chief-brown-mid);font-size:0.85rem;">📧 通知邮箱：<strong>wujinyi@chiefcoffee.cn</strong></p>
       </div>
     `;
     return;
@@ -1095,7 +1095,7 @@ function renderContacts() {
     <h2 style="margin-bottom:1.5rem;font-size:1.5rem;">💬 客户留言 <span style="font-size:0.85rem;font-weight:400;color:var(--chief-brown-light);">（共 ${contacts.length} 条 · 当前设备缓存）</span></h2>
     <div style="background:#E8F5E9;border:1px solid #A5D6A7;border-radius:12px;padding:1rem;margin-bottom:1.5rem;font-size:0.9rem;color:#2E7D32;">
       ✅ Web3Forms 已正常转发邮件到 <strong>wujinyi@chiefcoffee.cn</strong>。<br>
-      👉 <a href="https://app.web3forms.com" target="_blank" style="color:#1B5E20;font-weight:600;text-decoration:underline;">点击查看 Web3Forms 完整提交记录 →</a>
+      💡 Web3Forms 免费版不提供网页管理后台，所有提交通过邮件通知。请检查邮箱收件箱（含垃圾邮件）。
     </div>
     <div class="admin-card">
       <table class="data-table">
