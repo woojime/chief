@@ -1074,39 +1074,109 @@ function renderKeywords() {
 }
 
 /* ---------- Contacts ---------- */
-function renderContacts() {
+async function renderContacts() {
   const panel = document.getElementById('admin-contacts');
-  const contacts = appData.contacts || [];
 
-  if (contacts.length === 0) {
+  // Loading state
+  panel.innerHTML = `
+    <h2 style="margin-bottom:1.5rem;font-size:1.5rem;">💬 客户留言</h2>
+    <div class="admin-card" style="text-align:center;padding:3rem 1rem;">
+      <div style="font-size:2rem;margin-bottom:1rem;">⏳</div>
+      <p style="color:var(--chief-brown-mid);">正在从 Web3Forms 拉取最新提交记录...</p>
+    </div>
+  `;
+
+  // Try Web3Forms API first — this is the source of truth
+  try {
+    const res = await fetch(`https://api.web3forms.com/submissions?access_key=${WEB3FORMS_KEY}`);
+    if (res.ok) {
+      const submissions = await res.json();
+
+      // Web3Forms returns an array of submission objects
+      const records = Array.isArray(submissions) ? submissions : (submissions.data || []);
+
+      if (records.length === 0) {
+        renderContactsEmpty(panel);
+        return;
+      }
+
+      panel.innerHTML = `
+        <h2 style="margin-bottom:1.5rem;font-size:1.5rem;">💬 客户留言 <span style="font-size:0.85rem;font-weight:400;color:var(--chief-green);">（共 ${records.length} 条 · 实时同步自 Web3Forms）</span></h2>
+        <div class="admin-card">
+          <table class="data-table">
+            <thead><tr><th>时间</th><th>姓名</th><th>电话</th><th>公司</th><th>意向</th><th>留言</th></tr></thead>
+            <tbody>
+              ${records.map(r => {
+                const name = r.name || r.Name || '-';
+                const phone = r.phone || r.Phone || '-';
+                const company = r.company || r.Company || '-';
+                const intent = r.intent || r.Intent || '';
+                const message = r.message || r.Message || '-';
+                const time = r.created_at || r.date || r.time || '-';
+                return `
+                  <tr>
+                    <td style="white-space:nowrap;font-size:0.85rem;">${time}</td>
+                    <td><strong>${name}</strong></td>
+                    <td>${phone}</td>
+                    <td>${company || '-'}</td>
+                    <td><span class="tag">${intentLabel(intent)}</span></td>
+                    <td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="${message}">${message}</td>
+                  </tr>
+                `;
+              }).join('')}
+            </tbody>
+          </table>
+        </div>
+        <div style="margin-top:1rem;text-align:right;">
+          <a href="https://web3forms.com/dashboard" target="_blank" style="font-size:0.85rem;color:var(--chief-green);text-decoration:underline;">在 Web3Forms Dashboard 查看全部 →</a>
+        </div>
+      `;
+      return;
+    }
+  } catch (e) {
+    // CORS or network error — fall through to cached + dashboard link
+  }
+
+  // Fallback: show localStorage records + dashboard link
+  const contacts = appData.contacts || [];
+  if (contacts.length > 0) {
     panel.innerHTML = `
       <h2 style="margin-bottom:1.5rem;font-size:1.5rem;">💬 客户留言</h2>
-      <div class="admin-card" style="text-align:center;padding:3rem 1rem;">
-        <div style="font-size:3rem;margin-bottom:1rem;">📭</div>
-        <p style="color:var(--chief-brown-mid);">暂无客户留言，当有客户提交合作意向表单时，留言将自动出现在这里。</p>
+      <div style="background:#FFF8E1;border:1px solid #FFE082;border-radius:12px;padding:1rem;margin-bottom:1.5rem;font-size:0.9rem;color:#8D6E00;">
+        ⚠️ 无法实时同步 Web3Forms，以下显示的是本地缓存的 ${contacts.length} 条记录。<br>
+        👉 <a href="https://web3forms.com/dashboard" target="_blank" style="color:var(--chief-green);font-weight:600;">点击查看 Web3Forms Dashboard（完整记录）</a>
+      </div>
+      <div class="admin-card">
+        <table class="data-table">
+          <thead><tr><th>时间</th><th>姓名</th><th>电话</th><th>公司</th><th>意向</th><th>留言</th></tr></thead>
+          <tbody>
+            ${contacts.map(c => `
+              <tr>
+                <td style="white-space:nowrap;font-size:0.85rem;">${c.time}</td>
+                <td><strong>${c.name}</strong></td>
+                <td>${c.phone}</td>
+                <td>${c.company || '-'}</td>
+                <td><span class="tag">${intentLabel(c.intent)}</span></td>
+                <td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="${c.message || ''}">${c.message || '-'}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
       </div>
     `;
     return;
   }
 
+  renderContactsEmpty(panel);
+}
+
+function renderContactsEmpty(panel) {
   panel.innerHTML = `
-    <h2 style="margin-bottom:1.5rem;font-size:1.5rem;">💬 客户留言 <span style="font-size:0.85rem;font-weight:400;color:var(--chief-brown-light);">（共 ${contacts.length} 条，存储在本地浏览器）</span></h2>
-    <div class="admin-card">
-      <table class="data-table">
-        <thead><tr><th>时间</th><th>姓名</th><th>电话</th><th>公司</th><th>意向</th><th>留言</th></tr></thead>
-        <tbody>
-          ${contacts.map(c => `
-            <tr>
-              <td style="white-space:nowrap;font-size:0.85rem;">${c.time}</td>
-              <td><strong>${c.name}</strong></td>
-              <td>${c.phone}</td>
-              <td>${c.company || '-'}</td>
-              <td><span class="tag">${intentLabel(c.intent)}</span></td>
-              <td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="${c.message || ''}">${c.message || '-'}</td>
-            </tr>
-          `).join('')}
-        </tbody>
-      </table>
+    <h2 style="margin-bottom:1.5rem;font-size:1.5rem;">💬 客户留言</h2>
+    <div class="admin-card" style="text-align:center;padding:3rem 1rem;">
+      <div style="font-size:3rem;margin-bottom:1rem;">📭</div>
+      <p style="color:var(--chief-brown-mid);margin-bottom:1rem;">暂无客户留言记录。</p>
+      <a href="https://web3forms.com/dashboard" target="_blank" style="display:inline-block;padding:0.6rem 1.5rem;background:var(--chief-green);color:white;border-radius:8px;text-decoration:none;font-weight:600;">打开 Web3Forms Dashboard 查看</a>
     </div>
   `;
 }
