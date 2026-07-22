@@ -276,6 +276,7 @@ function init() {
   renderContent();
   renderFaq();
   initNavScroll();
+  checkAdminUrl();  // Check admin auth on page load
 
   // Event bindings
   document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
@@ -504,9 +505,113 @@ function submitContact(form) {
 }
 
 /* ============================================
-   Admin Panel
+   Admin Panel — Password Protected
    ============================================ */
+const ADMIN_PASSWORD = 'chief2026'; // 修改为你自己的密码
+const ADMIN_AUTH_KEY = 'chief_admin_authed';
+
+// Check if already authenticated
+function isAdminAuthed() {
+  return localStorage.getItem(ADMIN_AUTH_KEY) === 'true';
+}
+
+function setAdminAuthed(val) {
+  if (val) {
+    localStorage.setItem(ADMIN_AUTH_KEY, 'true');
+  } else {
+    localStorage.removeItem(ADMIN_AUTH_KEY);
+  }
+}
+
+// Show login modal
+function showAdminLogin() {
+  const overlay = document.getElementById('admin-login-overlay');
+  const input = document.getElementById('admin-password-input');
+  const error = document.getElementById('admin-login-error');
+  if (overlay) overlay.classList.add('active');
+  if (error) error.classList.remove('show');
+  if (input) {
+    input.value = '';
+    setTimeout(() => input.focus(), 100);
+  }
+}
+
+// Hide login modal
+function hideAdminLogin() {
+  const overlay = document.getElementById('admin-login-overlay');
+  if (overlay) overlay.classList.remove('active');
+}
+
+// Login handler
+function adminLogin() {
+  const input = document.getElementById('admin-password-input');
+  const error = document.getElementById('admin-login-error');
+  if (!input) return;
+
+  if (input.value === ADMIN_PASSWORD) {
+    setAdminAuthed(true);
+    hideAdminLogin();
+    showAdminFab();
+    showToast('验证通过，已进入管理模式', 'success');
+  } else {
+    if (error) error.classList.add('show');
+    input.value = '';
+    input.focus();
+  }
+}
+
+// Cancel login
+function adminCancel() {
+  hideAdminLogin();
+  // Clean URL
+  if (window.history && window.history.replaceState) {
+    const url = new URL(window.location);
+    url.searchParams.delete('admin');
+    window.history.replaceState({}, '', url);
+  }
+}
+
+// Show admin FAB
+function showAdminFab() {
+  const fab = document.getElementById('admin-fab');
+  if (fab) fab.classList.add('authed');
+}
+
+// Logout
+function adminLogout() {
+  setAdminAuthed(false);
+  const fab = document.getElementById('admin-fab');
+  if (fab) fab.classList.remove('authed');
+  const panel = document.getElementById('admin-panel');
+  if (panel) panel.classList.remove('active');
+  document.body.style.overflow = '';
+  showToast('已退出管理模式', 'success');
+}
+
+// Check URL for ?admin trigger
+function checkAdminUrl() {
+  const params = new URLSearchParams(window.location.search);
+  if (params.has('admin')) {
+    if (isAdminAuthed()) {
+      // Already authed, clean URL and show FAB
+      showAdminFab();
+    } else {
+      // Not authed yet, show login
+      showAdminLogin();
+    }
+  } else if (isAdminAuthed()) {
+    // Authed from previous session, show FAB silently
+    showAdminFab();
+  }
+}
+
+// Toggle admin panel (only works when authed)
 function toggleAdmin() {
+  if (!isAdminAuthed()) {
+    showAdminLogin();
+    return;
+  }
+
   const panel = document.getElementById('admin-panel');
   const isActive = panel.classList.contains('active');
 

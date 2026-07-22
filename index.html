@@ -361,7 +361,10 @@
     <a href="#" class="admin-sidebar-link" data-panel="geo-strategy" onclick="event.preventDefault();navigateAdmin('geo-strategy')">🎯 GEO策略</a>
     <a href="#" class="admin-sidebar-link" data-panel="geo-health" onclick="event.preventDefault();navigateAdmin('geo-health')">🩺 健康检查</a>
     <a href="#" class="admin-sidebar-link" data-panel="keywords" onclick="event.preventDefault();navigateAdmin('keywords')">🔑 关键词</a>
-    <button class="close-admin" onclick="toggleAdmin()">← 返回前台</button>
+    <div class="admin-sidebar-footer">
+      <button class="close-admin" onclick="toggleAdmin()">← 返回前台</button>
+      <button class="admin-logout-btn" onclick="adminLogout()" title="退出登录">🔒 退出</button>
+    </div>
   </aside>
 
   <main class="admin-main" id="admin-main">
@@ -396,8 +399,22 @@
   </div>
 </div>
 
-<!-- Admin FAB -->
-<button class="admin-fab" id="admin-fab" onclick="toggleAdmin()" title="进入后台">⚙️</button>
+<!-- Admin Login Modal -->
+<div class="admin-login-overlay" id="admin-login-overlay">
+  <div class="admin-login-card">
+    <h3>🔐 后台管理登录</h3>
+    <p>请输入管理密码以进入数据中心</p>
+    <input type="password" id="admin-password-input" placeholder="输入密码" autocomplete="off" onkeydown="if(event.key==='Enter')adminLogin()">
+    <div class="btn-row">
+      <button class="btn-cancel" onclick="adminCancel()">取消</button>
+      <button class="btn-login" onclick="adminLogin()">进入后台</button>
+    </div>
+    <div class="admin-login-error" id="admin-login-error">密码错误，请重试</div>
+  </div>
+</div>
+
+<!-- Admin FAB (hidden by default) -->
+<button class="admin-fab" id="admin-fab" onclick="toggleAdmin()" title="管理中心">⚙️</button>
 
 <!-- Toast -->
 <div class="toast" id="toast"></div>

@@ -1352,8 +1352,9 @@ h1, h2, h3, h4, h5, h6 {
 .toast-success { background: var(--chief-green); }
 .toast-error { background: var(--error); }
 
-/* Admin FAB */
+/* Admin FAB — hidden by default, shown after password auth */
 .admin-fab {
+  display: none; /* 默认隐藏 */
   position: fixed;
   bottom: 2rem; right: 2rem;
   width: 56px; height: 56px;
@@ -1371,10 +1372,101 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: center;
 }
 
+.admin-fab.authed { display: flex; } /* 登录后显示 */
+
 .admin-fab:hover {
   transform: scale(1.1) rotate(90deg);
   background: var(--chief-green-dark);
 }
+
+/* Admin Login Modal */
+.admin-login-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(8px);
+  z-index: 10000;
+  align-items: center;
+  justify-content: center;
+}
+.admin-login-overlay.active { display: flex; }
+
+.admin-login-card {
+  background: var(--bg-primary);
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  max-width: 400px; width: 90%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  border: 1px solid var(--border-color);
+}
+
+.admin-login-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.admin-login-card p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.admin-login-card input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  outline: none;
+  text-align: center;
+  letter-spacing: 0.3em;
+}
+.admin-login-card input:focus {
+  border-color: var(--chief-green);
+  box-shadow: 0 0 0 3px rgba(27,94,32,0.15);
+}
+
+.admin-login-card .btn-row {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  justify-content: center;
+}
+
+.admin-login-card .btn-login {
+  padding: 0.65rem 2rem;
+  background: var(--chief-green);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+.admin-login-card .btn-login:hover { background: var(--chief-green-dark); }
+
+.admin-login-card .btn-cancel {
+  padding: 0.65rem 1.5rem;
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.admin-login-error {
+  color: #D32F2F;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  display: none;
+}
+.admin-login-error.show { display: block; }
 
 /* Close admin */
 .close-admin {
@@ -1393,6 +1485,29 @@ h1, h2, h3, h4, h5, h6 {
 .close-admin:hover {
   border-color: var(--chief-brown-light);
   color: var(--chief-brown);
+}
+
+.admin-sidebar-footer {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.admin-logout-btn {
+  background: none;
+  border: 1.5px solid transparent;
+  color: var(--error, #D32F2F);
+  padding: 10px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 0.9rem;
+  transition: var(--transition-fast);
+}
+.admin-logout-btn:hover {
+  border-color: var(--error, #D32F2F);
+  background: rgba(211,47,47,0.05);
 }
 
 /* ============================================
