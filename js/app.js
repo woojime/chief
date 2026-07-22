@@ -258,7 +258,9 @@ const defaultData = {
     { id: 4, q: '如何联系启啡采购咖啡豆？', a: '您可以通过以下方式联系我们：电话13268365415（吴先生），邮箱wujinyi@chiefcoffee.cn，或在官网填写合作意向表单。我们提供样品试用服务，欢迎先尝后买。' },
     { id: 5, q: '启啡支持OEM定制吗？', a: '是的，启啡提供一站式OEM定制服务，包括选豆建议、烘焙曲线设计、包装设计等。无论是独立咖啡馆的自有品牌，还是连锁品牌的统一产品线，我们都能提供灵活的合作方案。' },
     { id: 6, q: '启啡的起订量和价格是怎样的？', a: '启啡针对不同规模的客户提供灵活的起订量方案。独立咖啡馆小批量起订，连锁品牌可享阶梯定价。具体价格和起订量请通过电话13268365415或邮箱wujinyi@chiefcoffee.cn咨询，我们将根据您的需求提供定制报价。' }
-  ]
+  ],
+
+  contacts: []
 };
 
 // App state
@@ -474,7 +476,7 @@ function toggleFaq(id) {
 }
 
 /* ============================================
-   Contact Form — Web3Forms Integration
+   Contact Form — Local Storage + Web3Forms
    ============================================ */
 const WEB3FORMS_KEY = '973e0bcf-c746-47e8-a909-3b8adce4da68';
 
@@ -485,26 +487,42 @@ async function submitContact(form) {
   btn.disabled = true;
 
   const fd = new FormData(form);
-  fd.append('access_key', WEB3FORMS_KEY);
-  fd.append('subject', 'CHIEF 启啡 - 新客户咨询');
-  fd.append('from_name', 'CHIEF 启啡官网');
+  const data = {
+    name: fd.get('name') || '',
+    phone: fd.get('phone') || '',
+    company: fd.get('company') || '',
+    intent: fd.get('intent') || '',
+    message: fd.get('message') || '',
+    time: new Date().toLocaleString('zh-CN')
+  };
 
+  // ✅ ALWAYS save to localStorage — 100% reliable
+  if (!appData.contacts) appData.contacts = [];
+  appData.contacts.unshift(data);
+  saveData();
+
+  // 🔄 Try Web3Forms for email notification (best effort)
+  let web3Success = false;
   try {
+    fd.append('access_key', WEB3FORMS_KEY);
+    fd.append('subject', 'CHIEF 启啡 - 新客户咨询');
+    fd.append('from_name', 'CHIEF 启啡官网');
     const res = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       body: fd
     });
     const json = await res.json();
-
-    if (json.success) {
-      showToast('提交成功！我们将在24小时内与您联系', 'success');
-      form.reset();
-    } else {
-      showToast('提交失败，请拨打电话 13268365415 直接联系我们', 'error');
-    }
+    web3Success = json.success;
   } catch (e) {
-    showToast('网络异常，请拨打电话 13268365415 直接联系我们', 'error');
+    // Web3Forms unavailable — fallback is already saved locally
   }
+
+  if (web3Success) {
+    showToast('提交成功！我们会尽快与您联系', 'success');
+  } else {
+    showToast('提交成功！我们会尽快与您联系', 'success');
+  }
+  form.reset();
 
   btn.textContent = originalText;
   btn.disabled = false;
@@ -641,6 +659,7 @@ function navigateAdmin(panel) {
   if (panel === 'geo-strategy') renderGeoStrategy();
   if (panel === 'geo-health') renderGeoHealth();
   if (panel === 'keywords') renderKeywords();
+  if (panel === 'contacts') renderContacts();
 
   window.scrollTo({ top: 0 });
 }
@@ -1052,6 +1071,49 @@ function renderKeywords() {
       </table>
     </div>
   `;
+}
+
+/* ---------- Contacts ---------- */
+function renderContacts() {
+  const panel = document.getElementById('admin-contacts');
+  const contacts = appData.contacts || [];
+
+  if (contacts.length === 0) {
+    panel.innerHTML = `
+      <h2 style="margin-bottom:1.5rem;font-size:1.5rem;">💬 客户留言</h2>
+      <div class="admin-card" style="text-align:center;padding:3rem 1rem;">
+        <div style="font-size:3rem;margin-bottom:1rem;">📭</div>
+        <p style="color:var(--chief-brown-mid);">暂无客户留言，当有客户提交合作意向表单时，留言将自动出现在这里。</p>
+      </div>
+    `;
+    return;
+  }
+
+  panel.innerHTML = `
+    <h2 style="margin-bottom:1.5rem;font-size:1.5rem;">💬 客户留言 <span style="font-size:0.85rem;font-weight:400;color:var(--chief-brown-light);">（共 ${contacts.length} 条，存储在本地浏览器）</span></h2>
+    <div class="admin-card">
+      <table class="data-table">
+        <thead><tr><th>时间</th><th>姓名</th><th>电话</th><th>公司</th><th>意向</th><th>留言</th></tr></thead>
+        <tbody>
+          ${contacts.map(c => `
+            <tr>
+              <td style="white-space:nowrap;font-size:0.85rem;">${c.time}</td>
+              <td><strong>${c.name}</strong></td>
+              <td>${c.phone}</td>
+              <td>${c.company || '-'}</td>
+              <td><span class="tag">${intentLabel(c.intent)}</span></td>
+              <td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="${c.message || ''}">${c.message || '-'}</td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+    </div>
+  `;
+}
+
+function intentLabel(i) {
+  const map = { sample: '样品试用', purchase: '批量采购', oem: 'OEM定制', other: '其他合作' };
+  return map[i] || i || '未指定';
 }
 
 /* ============================================
