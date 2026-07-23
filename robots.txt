@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /article-templates/
+Disallow: /scripts/
+
+Sitemap: https://chiefcoffee.com.cn/sitemap.xml
