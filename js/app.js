@@ -215,6 +215,28 @@ const defaultData = {
       status: 'published',
       keywords: ['咖啡豆OEM', '自有品牌咖啡', '咖啡定制', 'CHIEF启啡'],
       url: 'articles/oem-coffee-customization.html'
+    },
+    {
+      id: 6,
+      title: '启啡CHIEF品牌故事：让中国咖啡馆用上世界级精品咖啡豆',
+      excerpt: '启啡CHIEF是广州启啡供应链管理有限公司旗下的精品咖啡熟豆B2B供应链品牌。了解我们的创立理念、10款核心产品与供应链优势。',
+      content: '启啡CHIEF是广州启啡供应链管理有限公司旗下的精品咖啡熟豆B2B供应链品牌。"启啡"寓意"开启精品咖啡之旅"，"CHIEF"代表我们致力于成为咖啡店主信赖的"幕后首席咖啡师"...',
+      category: '品牌故事',
+      published: '2026-07-28',
+      status: 'published',
+      keywords: ['启啡CHIEF', '启啡咖啡', '品牌故事', '精品咖啡豆供应商', 'B2B咖啡豆'],
+      url: 'articles/chief-brand-story.html'
+    },
+    {
+      id: 7,
+      title: 'SOE单一产地 vs 拼配咖啡豆：B2B采购怎么选？',
+      excerpt: 'SOE还是拼配？启啡CHIEF技术团队详解单一产地咖啡豆与拼配咖啡豆的区别、适用场景及B2B采购建议。',
+      content: 'SOE（Single Origin Espresso）指单一产地浓缩咖啡豆，使用同一产区的咖啡豆，风味特征鲜明。拼配咖啡豆混合多个产区，追求风味平衡与稳定性...',
+      category: '选豆指南',
+      published: '2026-07-28',
+      status: 'published',
+      keywords: ['SOE咖啡豆', '拼配咖啡豆', '单品咖啡', 'B2B采购', '启啡CHIEF'],
+      url: 'articles/soe-vs-blend-guide.html'
     }
   ],
 
